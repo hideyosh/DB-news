@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./output.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
+</head>
+<body>
+    <nav class="bg-white">
+        <div class="px-2 sm:px-6 lg:px-12">
+          <div class="relative flex h-24 items-center justify-between">
+            <!-- <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                Mobile menu button
+              <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-primary hover:bg-primary hover:text-light focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                <span class="absolute -inset-0.5"></span>
+                <span class="sr-only">Open main menu</span>
+                <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+               
+                <svg class="hidden size-6" fill ox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                  <path stroke-linecap="round"  in="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div> -->
+             <!-- Seacrh bar -->
+            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+              <div class="flex shrink-0 items-center">
+                <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+              </div>
+              
+              <div class="w-96 mx-auto">
+                <form>       
+                    <div class="relative">
+                       <input type="search" id="default-search" class="block w-full px-6 py-4 font-roboto text-sm text-primary-default border-none placeholder:text-primary-default border-primary-default rounded-3xl focus:ring-primary-default bg-light focus:bg-white" placeholder="What are you looking for..." required />
+                       <button type="submit" class="absolute end-2.5 bottom-2.5 flex items-center justify-center bg-primary-default hover:bg-primary-darker font-semibold rounded-full text-sm w-8 h-8">
+                           <svg class="h-4 w-4 text-light" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                           </svg>
+                       </button>
+                    </div>
+                  </form>
+              </div>
+            
+              <div class="flex shrink-0 items-center">
+                <div class="hidden sm:ml-6 sm:block">
+                    <div class="flex space-x-4">
+                      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                      <a href="#" class="rounded-full bg-primary-default px-5 py-2 text-base font-medium text-light" aria-current="page">Technology</a>
+                      <a href="#" class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light hover:rounded-full">Sports</a>
+                      <a href="#" class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light hover:rounded-full">Politics</a>
+                      <a href="#" class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light hover:rounded-full">Entertaiment</a>
+                      <a href="#" class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light hover:rounded-full">More</a>
+                    </div>
+                  </div>
+              </div>    
+            </div>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden" id="mobile-menu">
+          <div class="space-y-1 px-2 pb-3 pt-2">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-primary hover:bg-primary hover:text-light">Techonlogy</a>
+            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-primary hover:bg-primary hover:text-light">Team</a>
+            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-primary hover:bg-primary hover:text-light">Projects</a>
+            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-primary hover:bg-primary hover:text-light">Calendar</a>
+          </div>
+        </div>
+    </nav>
+    <!-- Hot news content -->
+    <div class="bg-secondary grid grid-cols-2 gap-4 ps-11 py-10 border-t-2">
+        <div>
+            <h1 class="font-bold text-3xl text-primary-default tracking-widest mb-5">HOT NEWS</h1>
+            <a href="#" class="block font-semibold font-serif text-2xl mb-2 w-10/12 hover:underline">Kemenangan Telak, Liverpool Puncaki Klasemen Liga Inggris</a>
+            <p class="font-medium font-flex text-base text-primary-default tracking-wide mb-3">Sports</p>
+            <div class="relative group">
+                <a href="#">
+                    <img class="w-full h-80 object-cover rounded-lg" src="./assets/img/hi-res-42500494c29628884236755b8b91d0b5_crop_north.jpg" alt="Image description">
+                    <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity"></div>
+                </a>
+            </div>
+        </div>
+        <div>
+            <div class="flex items-start pl-14 mb-6">
+                <!-- Bagian Teks -->
+                <div class="flex-1">
+                    <a class="block font-semibold font-serif text-lg mb-2 hover:underline w-10/12 tracking-wide" href="#" aria-label="Bayern Munich Resmi Perpanjang Kontrak Striker Andalan">Bayern Munich Resmi Perpanjang Kontrak Striker Andalan</a>
+                    <p class="font-medium font-roboto text-base mb-1 w-10/12">Bayern Munich mengumumkan perpanjangan kontrak ...</p>
+                    <p class="font-medium font-flex text-base text-primary-default tracking-wide mb-3">Sports</p>
+                </div>
+                <!-- Bagian Gambar -->
+                <div class="relative group mr-12">
+                    <a href="#">
+                        <img class="w-56 h-32 object-cover rounded-lg" src="./assets/img/hi-res-42500494c29628884236755b8b91d0b5_crop_north.jpg" alt="Striker Bayern Munich memperpanjang kontrak">
+                        <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="flex items-start pl-14 mb-6">
+                <!-- Bagian Teks -->
+                <div class="flex-1">
+                    <a class="block font-semibold font-serif text-lg mb-2 hover:underline w-10/12 tracking-wide" href="#" aria-label="Bayern Munich Resmi Perpanjang Kontrak Striker Andalan">Bayern Munich Resmi Perpanjang Kontrak Striker Andalan</a>
+                    <p class="font-medium font-roboto text-base mb-1 w-10/12">Bayern Munich mengumumkan perpanjangan kontrak ...</p>
+                    <p class="font-medium font-flex text-base text-primary-default tracking-wide mb-3">Sports</p>
+                </div>
+                <!-- Bagian Gambar -->
+                <div class="relative group mr-12">
+                    <a href="#">
+                        <img class="w-56 h-32 object-cover rounded-lg" src="./assets/img/hi-res-42500494c29628884236755b8b91d0b5_crop_north.jpg" alt="Striker Bayern Munich memperpanjang kontrak">
+                        <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="flex items-start pl-14 mb-6">
+                <!-- Bagian Teks -->
+                <div class="flex-1">
+                    <a class="block font-semibold font-serif text-lg mb-2 hover:underline w-10/12 tracking-wide" href="#" aria-label="Bayern Munich Resmi Perpanjang Kontrak Striker Andalan">Bayern Munich Resmi Perpanjang Kontrak Striker Andalan</a>
+                    <p class="font-medium font-roboto text-base mb-1 w-10/12">Bayern Munich mengumumkan perpanjangan kontrak ...</p>
+                    <p class="font-medium font-flex text-base text-primary-default tracking-wide mb-3">Sports</p>
+                </div>
+                <!-- Bagian Gambar -->
+                <div class="relative group mr-12">
+                    <a href="#">
+                        <img class="w-56 h-32 object-cover rounded-lg" src="./assets/img/hi-res-42500494c29628884236755b8b91d0b5_crop_north.jpg" alt="Striker Bayern Munich memperpanjang kontrak">
+                        <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+      <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+      
+</body>
+</html>

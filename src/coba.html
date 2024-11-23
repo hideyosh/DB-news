@@ -1,0 +1,44 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./output.css">
+    </head>
+    <body>
+        <div class="flex items-center bg-gray-100 border border-gray-300 rounded-full p-2 shadow-sm">
+            <!-- Input -->
+            <input
+            type="text"
+            placeholder="What are you looking for?"
+            class="flex-grow bg-transparent border-none focus:outline-none px-4 text-sm text-gray-700 placeholder-gray-400"
+            />
+            <!-- Dropdown -->
+            <div class="relative">
+            <button class="text-gray-700 text-sm px-4 focus:outline-none focus:ring-violet-800">
+                Shots
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.72-3.71a.75.75 0 111.06 1.06l-4 4a.75.75 0 01-1.06 0l-4-4a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                </svg>
+            </button>
+            <!-- Dropdown options (hidden by default, toggle as needed) -->
+            <!-- Uncomment if dropdown options are needed -->
+            <!--
+            <ul class="absolute bg-white shadow-lg rounded-md mt-2">
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Option 1</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Option 2</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Option 3</li>
+            </ul>
+            -->
+            </div>
+            <!-- Search Icon -->
+            <button class="bg-pink-500 rounded-full p-2 text-white ml-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16l-4-4m0 0l4-4m-4 4h16" />
+            </svg>
+            </button>
+        </div>
+        
+    </body>
+    </html>
