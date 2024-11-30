@@ -6,7 +6,7 @@ const entertainmentBtn = document.getElementById("entertainment");
 const searchBtn = document.getElementById("searchBtn");
 
 // Variabel API
-const API_KEY = "pub_599507fcede71316cb2a4e05400921bf9cfc1";
+const API_KEY = "YOUR_API";
 const COUNTRY = "id";
 const HOT_NEWS = `https://newsdata.io/api/1/news?apikey=${API_KEY}&country=${COUNTRY}&language=id`;
 const LATEST_NEWS = `https://newsdata.io/api/1/latest?apikey=${API_KEY}&country=${COUNTRY}&language=${COUNTRY}`;
