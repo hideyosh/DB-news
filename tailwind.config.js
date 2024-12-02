@@ -17,6 +17,9 @@ module.exports = {
         light: '#F3F3F3',
         dark: '#31363F'
       },
+      height: {
+        '104': '29rem'
+      },
     },
   },
   plugins: [
