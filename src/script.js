@@ -6,7 +6,7 @@ const entertainmentBtn = document.getElementById("entertainment");
 const searchBtn = document.getElementById("searchBtn");
 
 // Variabel API
-const API_KEY = "pub_611317f18fdee19cf1830a76fd0ffd66348d3";
+const API_KEY = "pub_61131e87fc5896caa0a8f3e2a9132ebe7db7c";
 const COUNTRY = "id";
 const HOT_NEWS = `https://newsdata.io/api/1/news?apikey=${API_KEY}&country=${COUNTRY}&language=id`;
 const LATEST_NEWS = `https://newsdata.io/api/1/latest?apikey=${API_KEY}&country=${COUNTRY}&language=${COUNTRY}`;
@@ -179,7 +179,7 @@ const displayNews = (data) => {
           <div class="flex-1">
             <a class="block font-semibold font-serif text-lg text-dark mb-2 hover:underline w-10/12 tracking-wide"
               href="${news.link}" target="_blank">${news.title}</a>
-            <p class="font-medium font-roboto text-base text-dark mb-1 w-10/12">${news.description || "No description available."}</p>
+            <p class="font-medium font-roboto text-sm text-dark mb-2 w-9/12 text-balance">${news.description || "No description available."}</p>
             <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide w-10/12 mb-3">${news.category || "General"}</a>
           </div>
           <!-- Bagian Gambar -->
