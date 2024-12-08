@@ -147,18 +147,28 @@ const fetchCategoryNews = async () => {
     }
 };
 
+const truncateText = (text, maxWords) => {
+    if (!text) return "No description available.";
+    const words = text.split(" ");
+    if (words.length > maxWords) {
+        return words.slice(0, maxWords).join(" ") + "...";
+    }
+    return text;
+};
+
 // Fungsi untuk menampilkan berita
 const displayNews = (data) => {
     const newsData = data.results;
 
     const hotNewsContainer = document.getElementById('hotNewsContainer'); // Pastikan elemen ini ada di HTML
     hotNewsContainer.innerHTML = ""; // Reset kontainer
+    
 
     // Tampilkan berita utama pertama (Hot News)
     const headline = newsData[0]; // Ambil berita utama pertama
     const oneNewsHTML = `
             <div>
-                <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5">HOT NEWS</h1>
+                <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5  border-primary-default">HOT NEWS</h1>
                 <a href="${headline.link}" class="block font-semibold font-serif text-2xl text-dark mb-2 w-10/12 hover:underline" target="_blank">${headline.title}</a>
                 <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default w-10/12 tracking-wide mb-5">${headline.category || "General"}</a>
                 <div class="relative group">
@@ -179,7 +189,7 @@ const displayNews = (data) => {
           <div class="flex-1">
             <a class="block font-semibold font-serif text-lg text-dark mb-2 hover:underline w-10/12 tracking-wide"
               href="${news.link}" target="_blank">${news.title}</a>
-            <p class="font-medium font-roboto text-sm text-dark mb-2 w-9/12 text-balance">${news.description || "No description available."}</p>
+            <p class="font-medium font-roboto text-sm text-dark mb-2 w-9/12">${truncateText(news.description, 15)}</p>
             <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide w-10/12 mb-3">${news.category || "General"}</a>
           </div>
           <!-- Bagian Gambar -->
