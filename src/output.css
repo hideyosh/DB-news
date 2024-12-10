@@ -1327,6 +1327,14 @@ input:checked + .toggle-bg {
   height: 1.5rem;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
+.h-80 {
+  height: 20rem;
+}
+
 .h-9 {
   height: 2.25rem;
 }
@@ -2047,22 +2055,6 @@ input:checked + .toggle-bg {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
-.placeholder\:font-medium::-moz-placeholder {
-  font-weight: 500;
-}
-
-.placeholder\:font-medium::placeholder {
-  font-weight: 500;
-}
-
-.placeholder\:font-normal::-moz-placeholder {
-  font-weight: 400;
-}
-
-.placeholder\:font-normal::placeholder {
-  font-weight: 400;
-}
-
 .placeholder\:text-primary-default::-moz-placeholder {
   --tw-text-opacity: 1;
   color: rgb(85 110 152 / var(--tw-text-opacity, 1));
@@ -2120,18 +2112,6 @@ input:checked + .toggle-bg {
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-}
-
-.hover\:font-medium:hover {
-  font-weight: 500;
-}
-
-.hover\:font-semibold:hover {
-  font-weight: 600;
-}
-
-.hover\:font-bold:hover {
-  font-weight: 700;
 }
 
 .hover\:text-blue-600:hover {
