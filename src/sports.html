@@ -14,94 +14,109 @@
 <body>
   <!-- Navbar -->
   <nav class="bg-white border-b-2">
-    <div class="px-2 sm:px-6 lg:px-12">
-      <div class="relative flex h-24 items-center justify-between">
-        <div class="flex flex-1 lg:items-center lg:justify-center sm:items-stretch sm:justify-start">
-          <a href="#" class="flex shrink-0 items-center transform transition-transform duration-300 hover:scale-110">
-            <img src="./assets/img/Logo_DB-removebg-preview.png" class="w-28 h-28" alt="Your Company">
-          </a>
-
-          <div class="w-4/12 mx-auto">
-            <form class="max-w-md mx-auto">   
-              <!-- <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label> -->
-              <div class="relative">
-                  <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <svg class="w-4 h-4 text-primary-default" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                      </svg>
-                  </div>
-                  <input type="search" id="default-search" class="block w-full p-4 ps-11 font-roboto font-medium text-sm text-primary-default border-none placeholder:text-primary-default placeholder:font-normal rounded-lg bg-light focus:ring-primary-default focus:ring-2 focus:bg-white" placeholder="Berita apa yang kamu cari?" required />
-                  <button type="submit" class="text-light font-roboto absolute end-2.5 bottom-2.5 bg-primary-default hover:bg-primary-darker focus:ring-2 focus:outline-none focus:ring-primary-lighter font-medium rounded-lg text-sm px-4 py-2">Cari</button>
+    <div class="px-4 sm:px-6 lg:px-12 flex justify-between items-center">
+      <a href="#" class="flex items-center">
+        <img src="./assets/img/Logo_DB-removebg-preview.png" class="w-20 sm:w-28" alt="Logo">
+      </a>
+        <form class="hidden sm:block w-4/12 mx-auto">   
+          <div class="relative">
+              <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg class="w-4 h-4 text-primary-default" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                  </svg>
               </div>
-            </form>
+              <input type="search" id="default-search" class="block w-full p-4 ps-11 font-roboto font-normal text-sm text-primary-default border-none placeholder:text-primary-default placeholder:font-normal rounded-lg bg-light focus:ring-primary-default focus:ring-2 focus:bg-white" placeholder="Berita apa yang kamu cari?" required />
+              <button type="submit" class="text-light font-roboto absolute end-2.5 bottom-2.5 bg-primary-default hover:bg-primary-darker focus:ring-2 focus:outline-none focus:ring-primary-lighter font-medium rounded-lg text-sm px-4 py-2">Cari</button>
           </div>
+        </form>
 
-          <div class="flex shrink-0 items-center">
-            <div class="hidden sm:ml-6 sm:block">
-              <div class="flex space-x-4">
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a id="technology" href="./index.html"
-                  class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
-                  Technology
-                </a>
-                <a id="sports" href="#"
-                  class="rounded-full px-5 py-2 text-base font-medium text-primary-default"
-                  aria-current="page">
-                  Sports
-                </a>
-                <a id="politics" href="#"
-                  class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
-                  Politics
-                </a>
-                <a id="entertainment" href="#"
-                  class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
-                  Entertainment
-                </a>
-                <a href="#"
-                  class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
-                  More
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
+      <button id="menu-toggle" class="text-primary-default sm:hidden">
+        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>    
 
-    <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden" id="mobile-menu">
-      <div class="space-y-1 px-2 pb-3 pt-2">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+      <div id="menu" class="hidden sm:flex space-x-4">
+        <a id="technology" href="./index.html"
+          class="px-5 py-2 text-base font-medium text-primary-default"
+          aria-current="page">
+          Technology
+        </a>
+        <a id="sports" href="sports.html"
+          class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default hover:font-semibold">
+          Sports
+        </a>
+        <a id="politics" href="#"
+          class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
+          Politics
+        </a>
+        <a id="entertainment" href="#"
+          class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
+          Entertainment
+        </a>
         <a href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-primary hover:bg-primary hover:text-light">Techonlogy</a>
-        <a href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-primary hover:bg-primary hover:text-light">Team</a>
-        <a href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-primary hover:bg-primary hover:text-light">Projects</a>
-        <a href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-primary hover:bg-primary hover:text-light">Calendar</a>
+          class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
+          More
+        </a>
       </div>
     </div>
   </nav>
 
   <div id="sportNewsContainer" class="bg-white px-11 py-10">
     <h1 class="font-bold font-flex text-3xl text-primary-default border-primary-default tracking-widest w-3/12">SPORTS NEWS</h1>
-    <div class="grid grid-cols-3">
-      <div>1</div>
-      <div>1</div>
-      <div>1</div>
+    <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
+        <div class="flex justify-between">
+            <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">RECOMMENDATION</h1>
+            <a href="#"
+                class="hidden sm:flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110 ">
+                See All
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
+                class="bi bi-arrow-right cl ml-2" fll viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                </svg>
+            </a>
+        </div>
+     <div class="grid grid-rows-1 gap-10">
+      <div class="grid grid-cols-1">
+        <div class="relative group">
+            <a href="#" 
+               class="bg-[url('./assets/img/hi-res-42500494c29628884236755b8b91d0b5_crop_north.jpg')] rounded-lg bg-cover bg-center h-104 sm:h-104 w-full flex sm:items-end p-4 sm:p-9">
+                <!-- Konten Overlay -->
+                <div class="bg-black w-full h-13 text-light bg-opacity-40 py-3 px-3 sm:py-5 sm:px-5 rounded-lg flex flex-col space-y-2 sm:space-y-4">
+                    <!-- Judul -->
+                    <h1 class="font-serif font-semibold text-base sm:text-2xl tracking-wide mb-1 sm:mb-2">
+                        Pemerintah Jepang Siapkan Kebijakan Ramah Lingkungan untuk Hadapi Perubahan Iklim
+                    </h1>
+                    <!-- Deskripsi -->
+                    <p class="font-roboto text-xs sm:text-lg font-medium mb-2 sm:mb-3">
+                        Dalam upaya menanggulangi dampak perubahan iklim, Pemerintah Jepang mengumumkan serangkaian kebijakan ramah lingkungan yang akan diterapkan dalam beberapa tahun ke depan.
+                    </p>
+                    <!-- Kategori -->
+                    <p class="font-sans text-xs sm:text-base font-medium tracking-wide">Internasional</p>
+                </div>
+                <!-- Efek Hover -->
+                <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity"></div>
+            </a>
+        </div>
     </div>
-   
+    
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-8">
+            ${recomendNewsHTML}
+        </div>
+     </div>
+    </div>
   </div>
+
+  
   
 
   <!-- Footer -->
   <footer class="bg-white border-t-2 border-primary-default shadow">
     <div class="w-full py-2 px-11">
       <div class="flex items-center justify-between">
-        <a href="#" class="flex items-center mb-4 sm:mb-0">
-          <img src="./assets/img/Logo_DB-removebg-preview.png" class="w-28 h-28" alt="DB news logo" />
+        <a href="#" class="flex items-center mb-4">
+          <img src="./assets/img/Logo_DB-removebg-preview.png" class="w-28" alt="DB news logo" />
         </a>
 
         <ul class="flex items-center">

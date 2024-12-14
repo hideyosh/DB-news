@@ -16,71 +16,98 @@
   <nav class="bg-white border-b-2">
     <div class="px-2 sm:px-6 lg:px-12">
       <div class="relative flex h-24 items-center justify-between">
-        <div class="flex flex-1 lg:items-center lg:justify-center sm:items-stretch sm:justify-start">
-          <a href="#" class="flex shrink-0 items-center transform transition-transform duration-300 hover:scale-110">
-            <img src="./assets/img/Logo_DB-removebg-preview.png" class="w-28 h-28" alt="Your Company">
+        <div class="flex items-center justify-between w-full">
+          <!-- Logo -->
+          <a href="#" class="flex shrink-0 items-center">
+            <img src="./assets/img/Logo_DB-removebg-preview.png" class="w-20 sm:w-28" alt="Your Company">
           </a>
-
-          <div class="w-4/12 mx-auto">
-            <form class="max-w-md mx-auto">   
-              <!-- <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label> -->
-              <div class="relative">
-                  <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <svg class="w-4 h-4 text-primary-default" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                      </svg>
-                  </div>
-                  <input type="search" id="default-search" class="block w-full p-4 ps-11 font-roboto font-normal text-sm text-primary-default border-none placeholder:text-primary-default placeholder:font-normal rounded-lg bg-light focus:ring-primary-default focus:ring-2 focus:bg-white" placeholder="Berita apa yang kamu cari?" required />
-                  <button type="submit" class="text-light font-roboto absolute end-2.5 bottom-2.5 bg-primary-default hover:bg-primary-darker focus:ring-2 focus:outline-none focus:ring-primary-lighter font-medium rounded-lg text-sm px-4 py-2">Cari</button>
+          
+          <!-- Search Form -->
+          <form class="block w-full sm:w-6/12 lg:w-4/12 mx-3">
+            <div class="relative">
+              <label for="default-search" class="sr-only">Search</label>
+              <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-4 h-4 text-primary-default" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                </svg>
               </div>
-            </form>
-          </div>
-
-          <div class="flex shrink-0 items-center">
-            <div class="hidden sm:ml-6 sm:block">
-              <div class="flex space-x-4">
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a id="technology" href="./index.html"
-                  class="px-5 py-2 text-base font-medium text-primary-default"
-                  aria-current="page">
-                  Technology
-                </a>
-                <a id="sports" href="sports.html"
-                  class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default hover:font-semibold">
-                  Sports
-                </a>
-                <a id="politics" href="#"
-                  class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
-                  Politics
-                </a>
-                <a id="entertainment" href="#"
-                  class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
-                  Entertainment
-                </a>
-                <a href="#"
-                  class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
-                  More
-                </a>
-              </div>
+              <input 
+                type="search" 
+                id="default-search" 
+                class="block w-full p-4 ps-11 font-roboto font-normal text-sm text-primary-default border-none placeholder:text-primary-default placeholder:font-normal rounded-lg bg-light focus:ring-primary-default focus:ring-2 focus:bg-white" 
+                placeholder="Cari Berita..." 
+                aria-label="Search for news" 
+                required 
+              />
+              <button 
+                type="submit" 
+                aria-label="Search" 
+                class="text-light font-roboto absolute end-2.5 bottom-2 bg-primary-default hover:bg-primary-darker focus:ring-2 focus:outline-none focus:ring-primary-lighter font-medium rounded-lg text-sm px-4 py-2">
+                Cari
+              </button>
+            </div>
+          </form>
+          
+          <!-- Navigation -->
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <a id="technology" href="./index.html" class="px-5 py-2 text-base font-medium text-primary-default" aria-current="page">
+                Technology
+              </a>
+              <a id="sports" href="sports.html" class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default hover:font-semibold">
+                Sports
+              </a>
+              <a id="politics" href="#" class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
+                Politics
+              </a>
+              <a id="entertainment" href="#" class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
+                Entertainment
+              </a>
+              <a href="#" class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
+                More
+              </a>
             </div>
           </div>
         </div>
+        
+        <div class="relative inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+          <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-primary-default hover:bg-primary-default hover:text-light focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="absolute -inset-0.5"></span>
+            <span class="sr-only">Open main menu</span>
+            <!--
+              Icon when menu is closed.
+  
+              Menu open: "hidden", Menu closed: "block"
+            -->
+            <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <!--
+              Icon when menu is open.
+  
+              Menu open: "block", Menu closed: "hidden"
+            -->
+            <svg class="hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </div>
-    </div>
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden" id="mobile-menu">
+    <div class="hidden sm:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pb-3 pt-2">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
         <a href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-primary hover:bg-primary hover:text-light">Techonlogy</a>
+          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:text-primary-default">Techonlogy</a>
         <a href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-primary hover:bg-primary hover:text-light">Team</a>
+          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:text-primary-default">Team</a>
         <a href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-primary hover:bg-primary hover:text-light">Projects</a>
+          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:text-primary-default">Projects</a>
         <a href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-primary hover:bg-primary hover:text-light">Calendar</a>
+          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:text-primary-default">Calendar</a>
       </div>
     </div>
   </nav>
@@ -107,13 +134,13 @@
 
   <!-- Footer -->
   <footer class="bg-white border-t-2 border-primary-default shadow">
-    <div class="w-full py-2 px-11">
-      <div class="flex items-center justify-between">
+    <div class="w-full py-2 px-5 sm:px-11">
+      <div class="sm:flex sm:items-center sm:justify-between mb-2 sm:mb-0">
         <a href="#" class="flex items-center mb-4 sm:mb-0">
-          <img src="./assets/img/Logo_DB-removebg-preview.png" class="w-28 h-28" alt="DB news logo" />
+          <img src="./assets/img/Logo_DB-removebg-preview.png" class="w-28" alt="DB news logo" />
         </a>
 
-        <ul class="flex items-center">
+        <ul class="flex items-center -mt-7 sm:mt-0">
           <li>
             <a href="#"
               class="block p-3 text-primary-default rounded-full hover:text-white hover:bg-primary-default me-3">
@@ -157,7 +184,7 @@
 
         </ul>
       </div>
-      <p class="font-roboto font-medium text-base text-primary-default ps-3 w-3/12 tracking-wide">Menyajikan informasi
+      <p class="font-roboto font-medium text-base text-primary-default ps-3 sm:w-3/12 tracking-wide">Menyajikan informasi
         yang up to date, terpercaya dan akurat</p>
       <hr class="my-6 border-gray-300 sm:mx-auto lg:my-8" />
       <span class="block text-sm text-gray-400 text-left pb-6">© 2024 <a href="index.html" class="hover:underline">DB

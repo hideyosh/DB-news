@@ -14,72 +14,18 @@
 <body>
   <!-- Navbar -->
   <nav class="bg-white border-b-2">
-    <div class="px-2 sm:px-6 lg:px-12">
-      <div class="relative flex h-24 items-center justify-between">
-        <div class="flex flex-1 lg:items-center lg:justify-center sm:items-stretch sm:justify-start">
-          <a href="#" class="flex shrink-0 items-center transform transition-transform duration-300 hover:scale-110">
-            <img src="./assets/img/Logo_DB-removebg-preview.png" class="w-28 h-28" alt="Your Company">
-          </a>
-
-          <div class="w-4/12 mx-auto">
-            <form class="max-w-md mx-auto">   
-              <!-- <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label> -->
-              <div class="relative">
-                  <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                      <svg class="w-4 h-4 text-primary-default" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                      </svg>
-                  </div>
-                  <input type="search" id="default-search" class="block w-full p-4 ps-11 font-roboto font-medium text-sm text-primary-default border-none placeholder:text-primary-default placeholder:font-medium rounded-lg bg-light focus:ring-primary-default focus:ring-2 focus:bg-white" placeholder="Berita apa yang kamu cari?" required />
-                  <button type="submit" class="text-light font-roboto absolute end-2.5 bottom-2.5 bg-primary-default hover:bg-primary-darker focus:ring-2 focus:outline-none focus:ring-primary-lighter font-medium rounded-lg text-sm px-4 py-2">Cari</button>
-              </div>
-            </form>
-          </div>
-
-          <div class="flex shrink-0 items-center">
-            <div class="hidden sm:ml-6 sm:block">
-              <div class="flex space-x-4">
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a id="technology" href="./index.html"
-                  class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default hover:font-semibold">
-                  Technology
-                </a>
-                <a id="sports" href="sports.html"
-                  class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default hover:font-semibold">
-                  Sports
-                </a>
-                <a id="politics" href="#"
-                  class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
-                  Politics
-                </a>
-                <a id="entertainment" href="#"
-                  class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
-                  Entertainment
-                </a>
-                <a href="#"
-                  class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
-                  More
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-
-    <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden" id="mobile-menu">
-      <div class="space-y-1 px-2 pb-3 pt-2">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-primary hover:bg-primary hover:text-light">Techonlogy</a>
-        <a href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-primary hover:bg-primary hover:text-light">Team</a>
-        <a href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-primary hover:bg-primary hover:text-light">Projects</a>
-        <a href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-primary hover:bg-primary hover:text-light">Calendar</a>
+    <div class="px-4 sm:px-6 lg:px-12 flex justify-between items-center">
+      <a href="#" class="flex items-center">
+        <img src="./assets/img/Logo_DB-removebg-preview.png" class="w-20 sm:w-28" alt="Logo">
+      </a>
+      <button id="menu-toggle" class="text-primary-default sm:hidden">
+        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+      <div id="menu" class="hidden sm:flex space-x-4">
+        <a href="#" class="text-primary-default px-4 py-2 hover:bg-primary-default hover:text-white rounded-md">Technology</a>
+        <a href="#" class="text-primary-default px-4 py-2 hover:bg-primary-default hover:text-white rounded-md">Sports</a>
       </div>
     </div>
   </nav>
