@@ -4,8 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>DB News</title>
   <link rel="stylesheet" href="./output.css">
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="./assets/img/favicon/site.webmanifest">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
   </style>
@@ -18,61 +23,64 @@
       <div class="relative flex h-24 items-center justify-between">
         <div class="flex items-center justify-between w-full">
           <!-- Logo -->
-          <a href="#" class="flex shrink-0 items-center">
+          <a href="./index.html" class="flex shrink-0 items-center">
             <img src="./assets/img/Logo_DB-removebg-preview.png" class="w-20 sm:w-28" alt="Your Company">
           </a>
-          
+
           <!-- Search Form -->
           <form class="block w-full sm:w-8/12 lg:w-4/12 mx-auto">
             <div class="relative">
               <label for="default-search" class="sr-only">Search</label>
               <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <svg class="w-4 h-4 text-primary-default" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                <svg class="w-4 h-4 text-primary-default" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="none" viewBox="0 0 20 20">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                 </svg>
               </div>
-              <input 
-                type="search" 
-                id="default-search" 
-                class="block w-full p-4 ps-11 font-roboto font-normal text-sm text-primary-default border-none placeholder:text-primary-default placeholder:font-normal rounded-lg bg-light focus:ring-primary-default focus:ring-2 focus:bg-white" 
-                placeholder="Cari Berita..." 
-                aria-label="Search for news" 
-                required 
-              />
-              <button 
-                type="submit" 
-                aria-label="Search" 
+              <input type="text" id="newsQuery"
+                class="block w-full p-4 ps-11 font-roboto font-normal text-sm text-primary-default border-none placeholder:text-primary-default placeholder:font-normal rounded-lg bg-light focus:ring-primary-default focus:ring-2 focus:bg-white"
+                placeholder="Cari Berita..." aria-label="Search for news" required />
+              <button type="button" id="searchBtn" aria-label="Search" onclick="fetchSearchNews()"
                 class="text-light font-roboto absolute end-2.5 bottom-2 bg-primary-default hover:bg-primary-darker focus:ring-2 focus:outline-none focus:ring-primary-lighter font-medium rounded-lg text-sm px-4 py-2">
                 Cari
               </button>
             </div>
           </form>
-          
+
           <!-- Navigation -->
           <div class="hidden lg:ml-6 lg:block">
-            <div class="flex space-x-4">
-              <a id="technology" href="./index.html" class="px-5 py-2 text-base font-medium text-primary-default" aria-current="page">
+            <div id="navbarDesktop" class="flex space-x-4">
+              <a id="technologyDesktop" href="#teknologi" 
+                class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full"
+                aria-current="page">
                 Technology
               </a>
-              <a id="sports" href="sports.html" class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default hover:font-semibold">
+              <a id="sportsDesktop" href="#sport" 
+                class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
                 Sports
               </a>
-              <a id="politics" href="#" class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
+              <a id="politicsDesktop" href="#politik" 
+                class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
                 Politics
               </a>
-              <a id="entertainment" href="#" class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
+              <a id="entertainmentDesktop" href="#entertemen" 
+                class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
                 Entertainment
               </a>
-              <a href="#" class="px-5 py-2 text-base font-medium text-dark hover:text-primary-default">
+              <a id="othersDesktop" href="#more"
+                class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
                 More
               </a>
             </div>
           </div>
         </div>
-        
+
         <div class="relative inset-y-0 left-0 flex items-center lg:hidden">
           <!-- Mobile menu button-->
-          <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-primary-default hover:bg-primary-default hover:text-light focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset" aria-controls="mobile-menu" aria-expanded="false">
+          <button type="button"
+            class="relative inline-flex items-center justify-center rounded-md p-2 text-primary-default hover:bg-primary-default hover:text-light focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset"
+            aria-controls="mobile-menu" aria-expanded="false">
             <span class="absolute -inset-0.5"></span>
             <span class="sr-only">Open main menu</span>
             <!--
@@ -80,7 +88,8 @@
   
               Menu open: "hidden", Menu closed: "block"
             -->
-            <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true" data-slot="icon">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
             <!--
@@ -88,7 +97,8 @@
   
               Menu open: "block", Menu closed: "hidden"
             -->
-            <svg class="hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <svg class="hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true" data-slot="icon">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
           </button>
@@ -98,16 +108,17 @@
 
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="hidden lg:hidden" id="mobile-menu">
-      <div class="space-y-1 px-2 pb-3 pt-2">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:text-primary-default">Techonlogy</a>
-        <a href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:text-primary-default">Team</a>
-        <a href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:text-primary-default">Projects</a>
-        <a href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:text-primary-default">Calendar</a>
+      <div id="navbarMobile" class="space-y-1 px-2 pb-3 pt-2">
+        <a id="technologyMobile" href="#teknologi" 
+          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Techonlogy</a>
+        <a id="sportsMobile" href="#sport" 
+          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Sports</a>
+        <a id="politicsMobile" href="#politik" 
+          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Politics</a>
+        <a id="entertainmentMobile" href="#entertemen" 
+          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Entertainment</a>
+        <a id="othersMobile" href="#more"
+          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">More</a>
       </div>
     </div>
   </nav>
@@ -130,6 +141,34 @@
   <!-- Science and sports -->
   <div id="categoryNewsContainer">
     <!-- Isi Science and Sports -->
+  </div>
+
+  <!-- Search News -->
+  <div id="searchNewsContainer">
+    <!-- Isi Search News -->
+  </div>
+
+  <!-- Technology News -->
+  <div id="technologyNewsContainer">
+    <!-- Isi Technology News -->
+  </div>
+
+  <!-- sports News -->
+  <div id="sportsNewsContainer">
+    <!-- Isi sports News -->
+  </div>
+
+  <!-- politics News -->
+  <div id="politicsNewsContainer">
+    <!-- Isi politics News -->
+  </div>
+  <!-- entertainment News -->
+  <div id="entertainmentNewsContainer">
+    <!-- Isi entertainment News -->
+  </div>
+  <!-- others News -->
+  <div id="othersNewsContainer">
+    <!-- Isi others News -->
   </div>
 
   <!-- Footer -->
@@ -184,7 +223,8 @@
 
         </ul>
       </div>
-      <p class="font-roboto font-medium text-base text-primary-default ps-3 sm:w-6/12 lg:w-3/12 tracking-wide">Menyajikan informasi
+      <p class="font-roboto font-medium text-base text-primary-default ps-3 sm:w-6/12 lg:w-3/12 tracking-wide">
+        Menyajikan informasi
         yang up to date, terpercaya dan akurat</p>
       <hr class="my-6 border-gray-300 lg:mx-auto lg:my-8" />
       <span class="block text-sm text-gray-400 text-left pb-6">© 2024 <a href="index.html" class="hover:underline">DB
