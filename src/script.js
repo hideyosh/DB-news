@@ -184,18 +184,18 @@ const displayNews = (data) => {
     // Tampilkan 3 berita lainnya (Other News)
     const otherNews = newsData.slice(1, 4); // Ambil berita kedua hingga keempat
     const otherNewsHTML = otherNews.map(news => `
-        <div class="flex flex-col sm:flex-row sm:pl-14 mb-6">
+        <div class="flex flex-col lg:flex-row lg:pl-14 mb-12 lg:mb-6 mt-8 lg:mt-0">
           <!-- Bagian Teks -->
           <div class="flex-1">
-            <a class="block font-semibold font-serif text-lg text-dark mb-2 hover:underline w-full sm:w-10/12 tracking-wide"
+            <a class="block font-semibold font-serif text-lg sm:text-2xl lg:text-lg text-dark mb-2 hover:underline w-full sm:w-10/12 tracking-wide"
               href="${news.link}" target="_blank">${news.title}</a>
-            <p class="font-medium font-roboto text-sm text-dark mb-2 w-11/12 sm:w-9/12">${truncateText(news.description, 10)}</p>
-            <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide w-full sm:w-10/12 mb-3">${news.category || "General"}</a>
+            <p class="font-medium font-roboto text-sm sm:text-lg lg:text-sm text-dark mb-2 w-11/12 sm:w-9/12">${truncateText(news.description, 10)}</p>
+            <a href="#" class="block capitalize font-medium font-flex text-base sm:text-lg lg:text-base text-primary-default tracking-wide w-full sm:w-10/12 mb-3">${news.category || "General"}</a>
           </div>
           <!-- Bagian Gambar -->
-          <div class="relative group mr-12 h-56 sm:h-32">
+          <div class="relative group mr-12 h-56 sm:h-80 lg:h-32">
             <a href="${news.link}" target="_blank">
-              <img class="w-full sm:w-56 h-56 sm:h-32 object-cover rounded-lg"
+              <img class="w-full lg:w-56 h-56 sm:h-80 lg:h-32 object-cover rounded-lg"
                 src="${news.image_url || './assets/img/404.jpg'}" alt="${news.title}">
               <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity"></div>
             </a>
@@ -205,7 +205,7 @@ const displayNews = (data) => {
 
     // Tambahkan ke kolom kedua (Other News)
     hotNewsContainer.innerHTML += `
-        <div class="bg-secondary grid grid-cols-1 sm:grid-cols-2 gap-4 px-7 sm:ps-11 sm:pe-0 py-12 shadow-md mb-7">
+        <div class="bg-secondary grid grid-cols-1 lg:grid-cols-2 gap-4 px-7 sm:px-11 lg:ps-11 lg:pe-0 py-12 shadow-md mb-7">
             ${oneNewsHTML}
             <div>
                 ${otherNewsHTML}
@@ -254,7 +254,7 @@ const displayLatestNews = (data) => {
                 </svg>
             </a>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             ${latestNewsHTML}
         </div>
       </div>
@@ -306,17 +306,17 @@ const displayRecomendNews = (data) => {
      <div class="grid grid-rows-1 gap-10">
         <div class="grid grid-cols-1">
             <div class="relative group">
-                <a href="#" class="bg-[url('./assets/img/hi-res-42500494c29628884236755b8b91d0b5_crop_north.jpg')] rounded-lg bg-cover bg-center h-full sm:h-104 w-full flex sm:items-end pt-60 pb-3 px-3 sm:py-9 sm:px-9">
-                    <div class=" bg-black w-full sm:w-11/12 text-light bg-opacity-40 py-3 px-4 sm:py-5 sm:ps-5 sm:pe-2 rounded-lg">
-                        <h1 class="font-serif font-semibold text-xl sm:text-2xl tracking-wide mb-2">Pemerintah Jepang Siapkan Kebijakan Ramah Lingkungan untuk Hadapi Perubahan Iklim</h1>
-                        <p class="font-roboto text-base sm:text-lg font-medium w-11/12 mb-3">Dalam upaya menanggulangi dampak perubahan iklim, Pemerintah Jepang mengumumkan serangkaian kebijakan ramah lingkungan yang akan diterapkan dalam beberapa tahun ke depan.</p>
-                        <p class="font-flex text-sm sm:text-base font-medium tracking-wide">Internasional</p>
+                <a href="#" class="bg-[url('./assets/img/hi-res-42500494c29628884236755b8b91d0b5_crop_north.jpg')] rounded-lg bg-cover bg-center h-full lg:h-104 w-full flex lg:items-end pt-60 pb-3 px-3 lg:py-9 lg:px-9">
+                    <div class=" bg-black w-full lg:w-11/12 text-light bg-opacity-40 py-3 px-4 lg:py-5 lg:ps-5 lg:pe-2 rounded-lg">
+                        <h1 class="font-serif font-semibold text-xl lg:text-2xl tracking-wide mb-2">Pemerintah Jepang Siapkan Kebijakan Ramah Lingkungan untuk Hadapi Perubahan Iklim</h1>
+                        <p class="font-roboto text-base lg:text-lg font-medium w-11/12 mb-3">Dalam upaya menanggulangi dampak perubahan iklim, Pemerintah Jepang mengumumkan serangkaian kebijakan ramah lingkungan yang akan diterapkan dalam beberapa tahun ke depan.</p>
+                        <p class="font-flex text-lg lg:text-base font-medium tracking-wide">Internasional</p>
                     </div>
                     <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity"></div>
                 </a>
             </div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             ${recomendNewsHTML}
         </div>
      </div>
@@ -371,14 +371,14 @@ const displayCategoryNews = (dataScience, dataSports) => {
     `).join('');
 
     categoryNewsContainer.innerHTML += `
-        <div class="grid grid-cols-1 sm:grid-cols-4 gap-10 bg-white px-11 py-10 mb-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 bg-white px-5 sm:px-11 py-10 mb-12">
             <!-- Science -->
             <div class="col-span-2">
                 <!-- Title -->
                 <div class="flex justify-between">
                     <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5">SCIENCE</h1>
                     <a href="#"
-                    class="flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110 ">
+                    class="hidden sm:flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110 ">
                     See All
                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
                         class="bi bi-arrow-right cl ml-2" fll viewBox="0 0 16 16">
@@ -389,7 +389,7 @@ const displayCategoryNews = (dataScience, dataSports) => {
                 </div>
 
                 <!-- Content -->
-                <div class="grid grid-cols-2 gap-10">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
                     ${scienceNewsHTML}
                 </div>
             </div>
@@ -400,7 +400,7 @@ const displayCategoryNews = (dataScience, dataSports) => {
                 <div class="flex justify-between">
                     <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5">SPORTS</h1>
                     <a href="#"
-                    class="flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110 ">
+                    class=" hidden sm:flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110 ">
                     See All
                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
                         class="bi bi-arrow-right cl ml-2" fll viewBox="0 0 16 16">
@@ -411,7 +411,7 @@ const displayCategoryNews = (dataScience, dataSports) => {
                 </div>
 
                 <!-- Content -->
-                <div class="grid grid-cols-2 gap-10">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
                     ${sportsNewsHTML}
                 </div>
             </div>
