@@ -51,24 +51,24 @@
           <!-- Navigation -->
           <div class="hidden lg:ml-6 lg:block">
             <div id="navbarDesktop" class="flex space-x-4">
-              <a id="technologyDesktop" href="#teknologi" 
+              <a id="technologyDesktop" href="#technologyNewsContainer" onclick="fetchTechnologyNews()"
                 class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full"
                 aria-current="page">
                 Technology
               </a>
-              <a id="sportsDesktop" href="#sport" 
+              <a id="sportsDesktop" href="#sportsNewsContainer" onclick="fetchSportsNews()"
                 class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
                 Sports
               </a>
-              <a id="politicsDesktop" href="#politik" 
+              <a id="politicsDesktop" href="#politicsNewsContainer" onclick="fetchPoliticsNews()"
                 class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
                 Politics
               </a>
-              <a id="entertainmentDesktop" href="#entertemen" 
+              <a id="entertainmentDesktop" href="#entertainmentNewsContainer" onclick="fetchEntertainmentNews()"
                 class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
                 Entertainment
               </a>
-              <a id="othersDesktop" href="#more"
+              <a id="othersDesktop" href="#othersNewsContainer" onclick="fetchOthersNews()"
                 class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
                 More
               </a>
@@ -109,15 +109,15 @@
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="hidden lg:hidden" id="mobile-menu">
       <div id="navbarMobile" class="space-y-1 px-2 pb-3 pt-2">
-        <a id="technologyMobile" href="#teknologi" 
+        <a id="technologyMobile" href="#technologyNewsContainer" onclick="fetchTechnologyNews()"
           class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Techonlogy</a>
-        <a id="sportsMobile" href="#sport" 
+        <a id="sportsMobile" href="#sportsNewsContainer" onclick="fetchSportsNews()"
           class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Sports</a>
-        <a id="politicsMobile" href="#politik" 
+        <a id="politicsMobile" href="#politicsNewsContainer" onclick="fetchPoliticsNews()"
           class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Politics</a>
-        <a id="entertainmentMobile" href="#entertemen" 
+        <a id="entertainmentMobile" href="#entertainmentNewsContainer" onclick="fetchEntertainmentNews()"
           class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Entertainment</a>
-        <a id="othersMobile" href="#more"
+        <a id="othersMobile" href="#othersNewsContainer" onclick="fetchOthersNews()"
           class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">More</a>
       </div>
     </div>

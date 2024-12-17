@@ -29,39 +29,6 @@ const OTHERS_NEWS = `${HOT_NEWS}&category=other`;
 const SEARCH_NEWS = `${HOT_NEWS}&q=`;
 
 
-// onclick event
-technologyDesktopBtn.addEventListener("click", function () {
-    fetchTechnologyNews();
-});
-technologyMobileBtn.addEventListener("click", function () {
-    fetchTechnologyNews();
-});
-sportsDesktopBtn.addEventListener("click", function () {
-    fetchSportsNews();
-});
-sportsMobileBtn.addEventListener("click", function () {
-    fetchSportsNews();
-});
-politicsDesktopBtn.addEventListener("click", function () {
-    fetchPoliticsNews();
-});
-politicsMobileBtn.addEventListener("click", function () {
-    fetchPoliticsNews();
-});
-entertainmentDesktopBtn.addEventListener("click", function () {
-    fetchEntertainmentNews();
-});
-entertainmentMobileBtn.addEventListener("click", function () {
-    fetchEntertainmentNews();
-});
-othersDesktopBtn.addEventListener("click", function () {
-    fetchOthersNews();
-});
-othersMobileBtn.addEventListener("click", function () {
-    fetchOthersNews();
-});
-
-
 // Fungsi untuk menunda eksekusi permintaan
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -475,7 +442,7 @@ const displayNews = (data) => {
     const newsData = data.results;
 
     const hotNewsContainer = document.getElementById('hotNewsContainer'); // Pastikan elemen ini ada di HTML
-    hotNewsContainer.innerHTML = ""; // Reset kontainer
+    hotNewsContainer.innerHTML = ""; 
     
 
     // Tampilkan berita utama pertama (Hot News)
@@ -785,9 +752,7 @@ const displayTechnologyNews = (data) => {
     const navbarDesktop = document.getElementById('navbarDesktop');
     const navbarMobile = document.getElementById('navbarMobile');
     technologyNewsContainer.innerHTML = ""; // Reset kontainer
-    navbarDesktop.innerHTML = ""; // Reset kontainer
-    navbarMobile.innerHTML = ""; // Reset kontainer
-    displayKosongAll();
+    displayKosong();
 
     // Tampilkan Latest News
     const technologyNews = technologyNewsData.slice(0, 10); // Ambil berita kedua hingga keempat
@@ -808,43 +773,6 @@ const displayTechnologyNews = (data) => {
             </div>
       `).join('');
 
-    navbarDesktop.innerHTML += `
-        <a id="technologyDesktop" href="#teknologi"
-            class="rounded-full bg-primary-default px-5 py-2 text-base font-medium text-light"
-            aria-current="page">
-            Technology
-        </a>
-        <a id="sportsDesktop" href="#sport" 
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
-            Sports
-        </a>
-        <a id="politicsDesktop" href="#politik"
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
-            Politics
-        </a>
-        <a id="entertainment" href="#entertemen"
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
-            Entertainment
-        </a>
-        <a id="othersDesktop" href="#more"
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
-            More
-        </a>    
-    `;
-
-    navbarMobile.innerHTML += `
-        <a id="technologyMobile" href="#teknologi"
-          class="block rounded-md px-3 py-2 text-base font-medium bg-primary-default text-light">Techonlogy</a>
-        <a id="sportsMobile" href="#sport" onclick="fetchSportsNew()"
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Sports</a>
-        <a id="politicsMobile" href="#politik"
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Politics</a>
-        <a id="entertainmentMobile" href="#entertemen"
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Entertainment</a>
-        <a id="othersMobile" href="#more"
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">More</a>
-    `;
-
     technologyNewsContainer.innerHTML += `
       <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
         <div class="flex justify-between">
@@ -864,10 +792,8 @@ const displaySportsNews = (data) => {
     const sportsNewsContainer = document.getElementById('sportsNewsContainer'); // Pastikan elemen ini ada di HTML
     const navbarDesktop = document.getElementById('navbarDesktop');
     const navbarMobile = document.getElementById('navbarMobile');
-    sportsNewsContainer.innerHTML = ""; // Reset kontainer
-    navbarDesktop.innerHTML = ""; // Reset kontainer
-    navbarMobile.innerHTML = ""; // Reset kontainer
-    displayKosongAll();
+    sportsNewsContainer.innerHTML = ""; 
+    displayKosong();
 
     // Tampilkan Latest News
     const sportsNews = sportsNewsData.slice(0, 10); // Ambil berita kedua hingga keempat
@@ -888,43 +814,6 @@ const displaySportsNews = (data) => {
             </div>
       `).join('');
 
-    navbarDesktop.innerHTML += `
-        <a id="technologyDesktop" href="#teknologi"
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full"
-            aria-current="page">
-            Technology
-        </a>
-        <a id="sportsDesktop" href="#sport"  
-            class="rounded-full bg-primary-default px-5 py-2 text-base font-medium text-light">
-            Sports
-        </a>
-        <a id="politicsDesktop" href="#politik" 
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
-            Politics
-        </a>
-        <a id="entertainment" href="#entertemen" 
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
-            Entertainment
-        </a>
-        <a id="othersDesktop" href="#more"
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
-            More
-        </a>    
-    `;
-
-    navbarMobile.innerHTML += `
-        <a id="technologyMobile" href="#teknologi"
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Techonlogy</a>
-        <a id="sportsMobile" href="#sport" 
-          class="block rounded-md px-3 py-2 text-base font-medium bg-primary-default text-light">Sports</a>
-        <a id="politicsMobile" href="#politik" 
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Politics</a>
-        <a id="entertainmentMobile" href="#entertemen" 
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Entertainment</a>
-        <a id="othersMobile" href="#more"
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">More</a>
-    `;
-
     sportsNewsContainer.innerHTML += `
       <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
         <div class="flex justify-between">
@@ -944,10 +833,8 @@ const displayPoliticsNews = (data) => {
     const politicsNewsContainer = document.getElementById('politicsNewsContainer'); // Pastikan elemen ini ada di HTML
     const navbarDesktop = document.getElementById('navbarDesktop');
     const navbarMobile = document.getElementById('navbarMobile');
-    politicsNewsContainer.innerHTML = ""; // Reset kontainer
-    navbarDesktop.innerHTML = ""; // Reset kontainer
-    navbarMobile.innerHTML = ""; // Reset kontainer
-    displayKosongAll();
+    politicsNewsContainer.innerHTML = ""; 
+    displayKosong();
 
     // Tampilkan Latest News
     const politicsNews = politicsNewsData.slice(0, 10); // Ambil berita kedua hingga keempat
@@ -968,43 +855,6 @@ const displayPoliticsNews = (data) => {
             </div>
       `).join('');
 
-    navbarDesktop.innerHTML += `
-        <a id="technologyDesktop" href="#teknologi"
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full"
-            aria-current="page">
-            Technology
-        </a>
-        <a id="sportsDesktop" href="#sport"  
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
-            Sports
-        </a>
-        <a id="politicsDesktop" href="#politik" 
-            class="rounded-full bg-primary-default px-5 py-2 text-base font-medium text-light">
-            Politics
-        </a>
-        <a id="entertainment" href="#entertemen" 
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
-            Entertainment
-        </a>
-        <a id="othersDesktop" href="#more"
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
-            More
-        </a>    
-    `;
-
-    navbarMobile.innerHTML += `
-        <a id="technologyMobile" href="#teknologi"
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Techonlogy</a>
-        <a id="sportsMobile" href="#sport" 
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Sports</a>
-        <a id="politicsMobile" href="#politik" 
-          class="block rounded-md px-3 py-2 text-base font-medium bg-primary-default text-light">Politics</a>
-        <a id="entertainmentMobile" href="#entertemen" 
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Entertainment</a>
-        <a id="othersMobile" href="#more"
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">More</a>
-    `;
-
     politicsNewsContainer.innerHTML += `
       <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
         <div class="flex justify-between">
@@ -1024,10 +874,8 @@ const displayEntertainmentNews = (data) => {
     const entertainmentNewsContainer = document.getElementById('entertainmentNewsContainer'); // Pastikan elemen ini ada di HTML
     const navbarDesktop = document.getElementById('navbarDesktop');
     const navbarMobile = document.getElementById('navbarMobile');
-    entertainmentNewsContainer.innerHTML = ""; // Reset kontainer
-    navbarDesktop.innerHTML = ""; // Reset kontainer
-    navbarMobile.innerHTML = ""; // Reset kontainer
-    displayKosongAll();
+    entertainmentNewsContainer.innerHTML = ""; 
+    displayKosong();
 
     // Tampilkan Latest News
     const entertainmentNews = entertainmentNewsData.slice(0, 10); // Ambil berita kedua hingga keempat
@@ -1048,43 +896,6 @@ const displayEntertainmentNews = (data) => {
             </div>
       `).join('');
 
-    navbarDesktop.innerHTML += `
-        <a id="technologyDesktop" href="#teknologi"
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full"
-            aria-current="page">
-            Technology
-        </a>
-        <a id="sportsDesktop" href="#sport"  
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
-            Sports
-        </a>
-        <a id="politicsDesktop" href="#politik" 
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
-            Politics
-        </a>
-        <a id="entertainment" href="#entertemen" 
-            class="rounded-full bg-primary-default px-5 py-2 text-base font-medium text-light">
-            Entertainment
-        </a>
-        <a id="othersDesktop" href="#more"
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
-            More
-        </a>    
-    `;
-
-    navbarMobile.innerHTML += `
-        <a id="technologyMobile" href="#teknologi"
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Techonlogy</a>
-        <a id="sportsMobile" href="#sport" 
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Sports</a>
-        <a id="politicsMobile" href="#politik" 
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Politics</a>
-        <a id="entertainmentMobile" href="#entertemen" 
-          class="block rounded-md px-3 py-2 text-base font-medium bg-primary-default text-light">Entertainment</a>
-        <a id="othersMobile" href="#more"
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">More</a>
-    `;
-
     entertainmentNewsContainer.innerHTML += `
       <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
         <div class="flex justify-between">
@@ -1104,10 +915,8 @@ const displayOthersNews = (data) => {
     const othersNewsContainer = document.getElementById('othersNewsContainer'); // Pastikan elemen ini ada di HTML
     const navbarDesktop = document.getElementById('navbarDesktop');
     const navbarMobile = document.getElementById('navbarMobile');
-    othersNewsContainer.innerHTML = ""; // Reset kontainer
-    navbarDesktop.innerHTML = ""; // Reset kontainer
-    navbarMobile.innerHTML = ""; // Reset kontainer
-    displayKosongAll();
+    othersNewsContainer.innerHTML = ""; 
+    displayKosong();
 
     // Tampilkan Latest News
     const othersNews = othersNewsData.slice(0, 10); // Ambil berita kedua hingga keempat
@@ -1127,43 +936,6 @@ const displayOthersNews = (data) => {
                 </div>
             </div>
       `).join('');
-
-    navbarDesktop.innerHTML += `
-        <a id="technologyDesktop" href="#teknologi"
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full"
-            aria-current="page">
-            Technology
-        </a>
-        <a id="sportsDesktop" href="#sport"  
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
-            Sports
-        </a>
-        <a id="politicsDesktop" href="#politik" 
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
-            Politics
-        </a>
-        <a id="entertainment" href="#entertemen" 
-            class="px-5 py-2 text-base font-medium text-primary-default hover:bg-primary-default hover:text-light rounded-full">
-            Entertainment
-        </a>
-        <a id="othersDesktop" href="#more"
-            class="rounded-full bg-primary-default px-5 py-2 text-base font-medium text-light">
-            More
-        </a>    
-    `;
-
-    navbarMobile.innerHTML += `
-        <a id="technologyMobile" href="#teknologi"
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Techonlogy</a>
-        <a id="sportsMobile" href="#sport" 
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Sports</a>
-        <a id="politicsMobile" href="#politik" 
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Politics</a>
-        <a id="entertainmentMobile" href="#entertemen" 
-          class="block rounded-md px-3 py-2 text-base font-medium text-dark hover:bg-primary-default hover:text-light hover:rounded-full">Entertainment</a>
-        <a id="othersMobile" href="#more"
-          class="block rounded-md px-3 py-2 text-base font-medium bg-primary-default text-light">More</a>
-    `;
 
     othersNewsContainer.innerHTML += `
       <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
@@ -1218,3 +990,5 @@ window.onload = function () {
     fetchRecomendNews();
     fetchCategoryNews();
 };
+
+// update terbaru
