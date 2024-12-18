@@ -35,11 +35,11 @@ const displayNews = (data) => {
     const oneNewsHTML = `
             <div>
                 <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 border-primary-default">HOT NEWS</h1>
-                <a href="${headline.link}" class="block font-semibold font-serif text-2xl text-dark mb-2 w-full sm:w-10/12 hover:underline" target="_blank">${headline.title}</a>
+                <a href="${headline.link}" class="block font-semibold font-serif text-2xl sm:text-3xl lg:text-2xl text-dark mb-2 w-full lg:w-10/12 hover:underline" target="_blank">${headline.title}</a>
                 <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default w-full sm:w-10/12 tracking-wide mb-5">${headline.category || "General"}</a>
                 <div class="relative group">
                     <a href="${headline.link}" target="_blank">
-                    <img class="w-full h-96 object-cover rounded-lg"capitalize
+                    <img class="w-full h-96 object-cover rounded-lg"
                         src="${headline.image_url || './assets/img/404.jpg'}" alt="${headline.title}">
                     <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity"></div>
                     </a>
@@ -53,13 +53,13 @@ const displayNews = (data) => {
         <div class="flex flex-col lg:flex-row lg:pl-14 mb-12 lg:mb-6 mt-8 lg:mt-0">
           <!-- Bagian Teks -->
           <div class="flex-1">
-            <a class="block font-semibold font-serif text-lg sm:text-2xl lg:text-lg text-dark mb-2 hover:underline w-full sm:w-10/12 tracking-wide"
+            <a class="block font-semibold font-serif text-lg sm:text-2xl lg:text-lg text-dark mb-2 hover:underline w-full lg:w-10/12 tracking-wide text-justify lg:text-start"
               href="${news.link}" target="_blank">${news.title}</a>
-            <p class="font-medium font-roboto text-sm sm:text-lg lg:text-sm text-dark mb-2 w-11/12 sm:w-9/12">${truncateText(news.description, 10)}</p>
+            <p class="font-medium font-roboto text-sm sm:text-lg lg:text-sm text-dark mb-2 w-full lg:w-9/12 capitalize text-justify lg:text-start">${truncateText(news.description, 10)}</p>
             <a href="#" class="block capitalize font-medium font-flex text-base sm:text-lg lg:text-base text-primary-default tracking-wide w-full sm:w-10/12 mb-3">${news.category || "General"}</a>
           </div>
           <!-- Bagian Gambar -->
-          <div class="relative group mr-12 h-56 sm:h-80 lg:h-32">
+          <div class="relative group mr-12 w-full lg:w-56 h-56 sm:h-80 lg:h-32">
             <a href="${news.link}" target="_blank">
               <img class="w-full lg:w-56 h-56 sm:h-80 lg:h-32 object-cover rounded-lg"
                 src="${news.image_url || './assets/img/404.jpg'}" alt="${news.title}">
@@ -120,7 +120,7 @@ const displayLatestNews = (data) => {
                 </svg>
             </a>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             ${latestNewsHTML}
         </div>
       </div>
@@ -187,7 +187,7 @@ const displayRecomendNews = (data) => {
         </div>
      <div class="grid grid-rows-1 gap-10">
         ${oneHotNewsHTML}
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             ${recomendNewsHTML}
         </div>
      </div>
@@ -242,12 +242,12 @@ const displayCategoryNews = (dataScience, dataSports) => {
     `).join('');
 
     categoryNewsContainer.innerHTML += `
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 bg-white px-5 sm:px-11 py-10 mb-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-24 lg:gap-10 bg-white px-5 sm:px-11 py-10 mb-12">
             <!-- Science -->
             <div class="col-span-2">
                 <!-- Title -->
                 <div class="flex justify-between">
-                    <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5">SCIENCE</h1>
+                    <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">SCIENCE</h1>
                     <a href="#"
                     class="hidden sm:flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110 ">
                     See All
@@ -269,7 +269,7 @@ const displayCategoryNews = (dataScience, dataSports) => {
             <div class="col-span-2">
                 <!-- Title -->
                 <div class="flex justify-between">
-                    <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5">SPORTS</h1>
+                    <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">SPORTS</h1>
                     <a href="#sport"
                     class=" hidden sm:flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110 ">
                     See All
@@ -322,7 +322,7 @@ const displaySearchNews = (data) => {
         <div class="flex justify-between">
             <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">SEARCH: ${encodeURIComponent(newsQuery.value)}</h1>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             ${searchNewsHTML}
         </div>
       </div>
@@ -363,7 +363,7 @@ const displayTechnologyNews = (data) => {
         <div class="flex justify-between">
             <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">TECHNOLOGY</h1>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             ${technologyNewsHTML}
         </div>
       </div>
@@ -404,7 +404,7 @@ const displaySportsNews = (data) => {
         <div class="flex justify-between">
             <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">SPORTS</h1>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             ${sportsNewsHTML}
         </div>
       </div>
@@ -445,7 +445,7 @@ const displayPoliticsNews = (data) => {
         <div class="flex justify-between">
             <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">POLITICS</h1>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             ${politicsNewsHTML}
         </div>
       </div>
@@ -486,7 +486,7 @@ const displayEntertainmentNews = (data) => {
         <div class="flex justify-between">
             <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">ENTERTAINMENT</h1>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             ${entertainmentNewsHTML}
         </div>
       </div>
@@ -527,7 +527,7 @@ const displayOthersNews = (data) => {
         <div class="flex justify-between">
             <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">OTHERS</h1>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             ${othersNewsHTML}
         </div>
       </div>
