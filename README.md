@@ -9,7 +9,7 @@ Website **DB News** bertujuan untuk memberikan pengalaman membaca berita yang ce
 ## Fitur Utama
 
 - **Berita Terbaru**: Menampilkan berita terbaru secara real-time.
-- **Kategori Berita**: Pengguna dapat memilih berita berdasarkan kategori yang tersedia (misalnya, Sports, Politics, Technology).
+- **Kategori Berita**: Pengguna dapat memilih berita berdasarkan kategori yang tersedia (misalnya, Sports, Politics, Technology, dan Entertainment).
 - **Pencarian Berita**: Fitur pencarian yang memungkinkan pengguna mencari berita berdasarkan kata kunci.
 - **Desain Responsif**: Tampilan yang optimal untuk berbagai perangkat, baik desktop maupun mobile.
 
