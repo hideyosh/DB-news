@@ -110,7 +110,7 @@ const displayLatestNews = (data) => {
       <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
         <div class="flex justify-between">
             <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">LATEST NEWS</h1>
-            <a href="#"
+            <a href="#latestNewsContainer"
                 class="hidden sm:flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110">
                 See All
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
