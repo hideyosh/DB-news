@@ -2,8 +2,8 @@
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 // perpendek desc berita
-const truncateText = (text, maxWords) => {
-    if (!text) return "No description available.";
+const memotongText = (text, maxWords) => {
+    if (!text) return "Deskripsi tidak ada.";
     const words = text.split(" ");
     if (words.length > maxWords) {
         return words.slice(0, maxWords).join(" ") + "...";
@@ -11,34 +11,33 @@ const truncateText = (text, maxWords) => {
     return text;
 };
 
-// JavaScript to handle mobile menu toggle
 const menuButton = document.querySelector('[aria-controls="mobile-menu"]');
 const mobileMenu = document.getElementById('mobile-menu');
 
-menuButton.addEventListener('click', () => {
-  // Toggle the "aria-expanded" attribute
+menuButton.addEventListener('click', function() {
   const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-  menuButton.setAttribute('aria-expanded', !isExpanded);
+  menuButton.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
 
-  // Toggle the visibility of the menu icons
   const icons = menuButton.querySelectorAll('svg');
   icons.forEach(icon => {
     icon.classList.toggle('hidden');
     icon.classList.toggle('block');
   });
 
-  // Ensure hamburger icon shows first when closed, and X icon shows first when open
-  if (!isExpanded) {
-    icons[0].classList.remove('hidden'); // Hamburger icon
-    icons[1].classList.add('hidden');    // X icon
+  if (isExpanded === false) {
+    icons[0].classList.add('hidden'); 
+    icons[1].classList.remove('hidden'); 
   } else {
-    icons[0].classList.add('hidden');   // Hamburger icon
-    icons[1].classList.remove('hidden');// X icon
+    icons[0].classList.remove('hidden'); 
+    icons[1].classList.add('hidden');
   }
 
-  // Toggle the visibility of the mobile menu
-  if (mobileMenu) {
-    mobileMenu.classList.toggle('hidden');
+  if (mobileMenu !== null) {
+    if (mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.remove('hidden');
+    } else {
+      mobileMenu.classList.add('hidden');
+    }
   }
 });
 

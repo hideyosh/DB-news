@@ -55,7 +55,7 @@ const displayNews = (data) => {
           <div class="flex-1">
             <a class="block font-semibold font-serif text-lg sm:text-2xl lg:text-lg text-dark mb-2 hover:underline w-full lg:w-10/12 tracking-wide text-justify lg:text-start"
               href="${news.link}" target="_blank">${news.title}</a>
-            <p class="font-medium font-roboto text-sm sm:text-lg lg:text-sm text-dark mb-2 w-full lg:w-9/12 capitalize text-justify lg:text-start">${truncateText(news.description, 10)}</p>
+            <p class="font-medium font-roboto text-sm sm:text-lg lg:text-sm text-dark mb-2 w-full lg:w-9/12 capitalize text-justify lg:text-start">${memotongText(news.description, 10)}</p>
             <a href="#" class="block capitalize font-medium font-flex text-base sm:text-lg lg:text-base text-primary-default tracking-wide w-full sm:w-10/12 mb-3">${news.category || "General"}</a>
           </div>
           <!-- Bagian Gambar -->
@@ -114,7 +114,7 @@ const displayLatestNews = (data) => {
                 class="hidden sm:flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110">
                 See All
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
-                class="bi bi-arrow-right cl ml-2" fll viewBox="0 0 16 16">
+                class="bi bi-arrow-right ml-2" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                     d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
                 </svg>
@@ -139,10 +139,11 @@ const displayRecomendNews = (data) => {
     const oneHotNewsHTML = `
         <div class="grid grid-cols-1">
             <div class="relative group">
-                <a href="${headlineHotNews.link}" class="bg-[url('./assets/img/hi-res-42500494c29628884236755b8b91d0b5_crop_north.jpg')] rounded-lg bg-cover bg-center h-full lg:h-104 w-full flex lg:items-end pt-60 pb-3 px-3 lg:py-9 lg:px-9">
+                <a href="${headlineHotNews.link}" class="rounded-lg bg-cover bg-center h-full lg:h-104 w-full flex lg:items-end pt-60 pb-3 px-3 lg:py-9 lg:px-9" style="background-image: url('${headlineHotNews.image_url}');">
                     <div class=" bg-black w-full lg:w-11/12 text-light bg-opacity-40 py-3 px-4 lg:py-5 lg:ps-5 lg:pe-2 rounded-lg">
                         <h1 class="font-serif font-semibold text-xl lg:text-2xl tracking-wide mb-2">${headlineHotNews.title}</h1>
-                        <p class="font-roboto text-base lg:text-lg font-medium w-11/12 mb-3">${truncateText(headlineHotNews.description, 10)}</p>
+                        <p class="font-roboto text-base lg:text-lg font-medium w-11/12 mb-3">${memotongText(headlineHotNews.description, 20)}</p>
+                        <p class="font-flex text-sm sm:text-base font-medium tracking-wide capitalize">${headlineHotNews.category}</p>
                     </div>
                     <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity"></div>
                 </a>
@@ -179,7 +180,7 @@ const displayRecomendNews = (data) => {
                 class="hidden sm:flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110 ">
                 See All
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
-                class="bi bi-arrow-right cl ml-2" fll viewBox="0 0 16 16">
+                class="bi bi-arrow-right ml-2" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                     d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
                 </svg>
@@ -252,7 +253,7 @@ const displayCategoryNews = (dataScience, dataSports) => {
                     class="hidden sm:flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110 ">
                     See All
                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
-                        class="bi bi-arrow-right cl ml-2" fll viewBox="0 0 16 16">
+                        class="bi bi-arrow-right ml-2" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
                         d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
                     </svg>
@@ -274,7 +275,7 @@ const displayCategoryNews = (dataScience, dataSports) => {
                     class=" hidden sm:flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110 ">
                     See All
                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
-                        class="bi bi-arrow-right cl ml-2" fll viewBox="0 0 16 16">
+                        class="bi bi-arrow-right ml-2" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
                         d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
                     </svg>
