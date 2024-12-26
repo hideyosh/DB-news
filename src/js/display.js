@@ -1,19 +1,12 @@
-// Display kosoong
-const displayKosongAll = () => {
-    // Pilih hanya div dengan ID tertentu
-    const specificDivs = document.querySelectorAll(
-        "#hotNewsContainer, #latestNewsContainer, #recomendNewsContainer, #categoryNewsContainer, #technologyNewsContainer, #navbarDesktop, #navbarMobile"
-    );
+// Error Log
+const errorContainer = document.getElementById('errorContainer');
+errorContainer.innerHTML = ""; 
 
-    // Kosongkan isi dari setiap div yang dipilih
-    specificDivs.forEach(div => {
-        div.innerHTML = ""; // Kosongkan isi dari div
-    });
-};
+// Display kosoong
 const displayKosong = () => {
     // Pilih hanya div dengan ID tertentu
     const specificDivs = document.querySelectorAll(
-        "#hotNewsContainer, #latestNewsContainer, #recomendNewsContainer, #categoryNewsContainer, #searchNewsContainer, #technologyNewsContainer, #sportsNewsContainer, #politicsNewsContainer, #entertainmentNewsContainer, #othersNewsContainer"
+        "#hotNewsContainer, #latestNewsContainer, #recomendNewsContainer, #categoryNewsContainer, #searchNewsContainer, #technologyNewsContainer, #sportsNewsContainer, #politicsNewsContainer, #entertainmentNewsContainer, #othersNewsContainer, #detailNewsContainer"
     );
 
     // Kosongkan isi dari setiap div yang dipilih
@@ -35,10 +28,10 @@ const displayNews = (data) => {
     const oneNewsHTML = `
             <div>
                 <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 border-primary-default">HOT NEWS</h1>
-                <a href="${headline.link}" class="block font-semibold font-serif text-2xl sm:text-3xl lg:text-2xl text-dark mb-2 w-full lg:w-10/12 hover:underline" target="_blank">${headline.title}</a>
+                <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${headline.article_id}')" class="block font-semibold font-serif text-2xl sm:text-3xl lg:text-2xl text-dark mb-2 w-full lg:w-10/12 hover:underline">${headline.title}</a>
                 <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default w-full sm:w-10/12 tracking-wide mb-5">${headline.category || "General"}</a>
                 <div class="relative group">
-                    <a href="${headline.link}" target="_blank">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${headline.article_id}')">
                     <img class="w-full h-96 object-cover rounded-lg"
                         src="${headline.image_url || './assets/img/404.jpg'}" alt="${headline.title}">
                     <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity"></div>
@@ -54,13 +47,13 @@ const displayNews = (data) => {
           <!-- Bagian Teks -->
           <div class="flex-1">
             <a class="block font-semibold font-serif text-lg sm:text-2xl lg:text-lg text-dark mb-2 hover:underline w-full lg:w-10/12 tracking-wide text-justify lg:text-start"
-              href="${news.link}" target="_blank">${news.title}</a>
+              id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')">${news.title}</a>
             <p class="font-medium font-roboto text-sm sm:text-lg lg:text-sm text-dark mb-2 w-full lg:w-9/12 capitalize text-justify lg:text-start">${memotongText(news.description, 10)}</p>
             <a href="#" class="block capitalize font-medium font-flex text-base sm:text-lg lg:text-base text-primary-default tracking-wide w-full sm:w-10/12 mb-3">${news.category || "General"}</a>
           </div>
           <!-- Bagian Gambar -->
           <div class="relative group mr-12 w-full lg:w-56 h-56 sm:h-80 lg:h-32">
-            <a href="${news.link}" target="_blank">
+            <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')">
               <img class="w-full lg:w-56 h-56 sm:h-80 lg:h-32 object-cover rounded-lg"
                 src="${news.image_url || './assets/img/404.jpg'}" alt="${news.title}">
               <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity"></div>
@@ -92,7 +85,7 @@ const displayLatestNews = (data) => {
     const latestNewsHTML = latestNews.map(news => `
             <div>
                 <div class="relative group">
-                    <a href="${news.link}">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')">
                         <img class="rounded-lg w-full h-60 sm:h-48 object-cover" src="${news.image_url || './assets/img/404.jpg'}"
                         alt="${news.title}">
                         <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity">
@@ -100,7 +93,7 @@ const displayLatestNews = (data) => {
                     </a>
                 </div>
                 <div class="mt-3">
-                    <a href="${news.link}" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
                     <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide mt-2">${news.category || "General"}</a>
                 </div>
             </div>
@@ -139,7 +132,7 @@ const displayRecomendNews = (data) => {
     const oneHotNewsHTML = `
         <div class="grid grid-cols-1">
             <div class="relative group">
-                <a href="${headlineHotNews.link}" class="rounded-lg bg-cover bg-center h-full lg:h-104 w-full flex lg:items-end pt-60 pb-3 px-3 lg:py-9 lg:px-9" style="background-image: url('${headlineHotNews.image_url}');">
+                <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${headlineHotNews.article_id}')" class="rounded-lg bg-cover bg-center h-full lg:h-104 w-full flex lg:items-end pt-60 pb-3 px-3 lg:py-9 lg:px-9" style="background-image: url('${headlineHotNews.image_url || './assets/img/404.jpg'}');">
                     <div class=" bg-black w-full lg:w-11/12 text-light bg-opacity-40 py-3 px-4 lg:py-5 lg:ps-5 lg:pe-2 rounded-lg">
                         <h1 class="font-serif font-semibold text-xl lg:text-2xl tracking-wide mb-2">${headlineHotNews.title}</h1>
                         <p class="font-roboto text-base lg:text-lg font-medium w-11/12 mb-3">${memotongText(headlineHotNews.description, 20)}</p>
@@ -156,7 +149,7 @@ const displayRecomendNews = (data) => {
     const recomendNewsHTML = recomendNews.map(news => `
             <div>
                 <div class="relative group">
-                    <a href="${news.link}">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')">
                         <img class="rounded-lg w-full h-60 sm:h-48 object-cover" src="${news.image_url || './assets/img/404.jpg'}"
                         alt="${news.title}">
                         <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity">
@@ -164,7 +157,7 @@ const displayRecomendNews = (data) => {
                     </a>
                 </div>
                 <div class="mt-3">
-                    <a href="${news.link}" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
                     <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide mt-2">${news.category || "General"}</a>
                 </div>
             </div>
@@ -209,7 +202,7 @@ const displayCategoryNews = (dataScience, dataSports) => {
     const scienceNewsHTML = scienceNews.map(newsScience => `
             <div>
                 <div class="relative group">
-                    <a href="${newsScience.link}">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${newsScience.article_id}')">
                     <img class="rounded-lg w-full h-48 object-cover" src="${newsScience.image_url || './assets/img/404.jpg'}"
                         alt="${newsScience.title}">
                     <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity">
@@ -217,7 +210,7 @@ const displayCategoryNews = (dataScience, dataSports) => {
                     </a>
                 </div>
                 <div class="mt-3">
-                    <a href="${newsScience.link}" class="block w-full h-25 font-serif font-semibold text-lg text-dark hover:underline">${newsScience.title}</a>
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${newsScience.article_id}')" class="block w-full h-25 font-serif font-semibold text-lg text-dark hover:underline">${newsScience.title}</a>
                     <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide mt-2">${newsScience.category || "General"}</a>
                 </div>
             </div>
@@ -228,7 +221,7 @@ const displayCategoryNews = (dataScience, dataSports) => {
     const sportsNewsHTML = sportsNews.map(newsSports => `
             <div>
                 <div class="relative group">
-                    <a href="${newsSports.link}">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${newsSports.article_id}')">
                     <img class="rounded-lg w-full h-48 object-cover" src="${newsSports.image_url || './assets/img/404.jpg'}"
                         alt="${newsSports.title}">
                     <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity">
@@ -236,7 +229,7 @@ const displayCategoryNews = (dataScience, dataSports) => {
                     </a>
                 </div>
                 <div class="mt-3">
-                    <a href="${newsSports.link}" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${newsSports.title}</a>
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${newsSports.article_id}')" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${newsSports.title}</a>
                     <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide mt-2">${newsSports.category || "General"}</a>
                 </div>
             </div>
@@ -304,7 +297,7 @@ const displaySearchNews = (data) => {
     const searchNewsHTML = searchNews.map(news => `
             <div>
                 <div class="relative group">
-                    <a href="${news.link}">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')">
                         <img class="rounded-lg w-full h-60 sm:h-48 object-cover" src="${news.image_url || './assets/img/404.jpg'}"
                         alt="${news.title}">
                         <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity">
@@ -312,7 +305,7 @@ const displaySearchNews = (data) => {
                     </a>
                 </div>
                 <div class="mt-3">
-                    <a href="${news.link}" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
                     <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide mt-2">${news.category || "General"}</a>
                 </div>
             </div>
@@ -345,7 +338,7 @@ const displayTechnologyNews = (data) => {
     const technologyNewsHTML = technologyNews.map(news => `
             <div>
                 <div class="relative group">
-                    <a href="${news.link}">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')">
                         <img class="rounded-lg w-full h-60 sm:h-48 object-cover" src="${news.image_url || './assets/img/404.jpg'}"
                         alt="${news.title}">
                         <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity">
@@ -353,7 +346,7 @@ const displayTechnologyNews = (data) => {
                     </a>
                 </div>
                 <div class="mt-3">
-                    <a href="${news.link}" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
                     <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide mt-2">${news.category || "General"}</a>
                 </div>
             </div>
@@ -386,7 +379,7 @@ const displaySportsNews = (data) => {
     const sportsNewsHTML = sportsNews.map(news => `
             <div>
                 <div class="relative group">
-                    <a href="${news.link}">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')">
                         <img class="rounded-lg w-full h-60 sm:h-48 object-cover" src="${news.image_url || './assets/img/404.jpg'}"
                         alt="${news.title}">
                         <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity">
@@ -394,7 +387,7 @@ const displaySportsNews = (data) => {
                     </a>
                 </div>
                 <div class="mt-3">
-                    <a href="${news.link}" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
                     <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide mt-2">${news.category || "General"}</a>
                 </div>
             </div>
@@ -427,7 +420,7 @@ const displayPoliticsNews = (data) => {
     const politicsNewsHTML = politicsNews.map(news => `
             <div>
                 <div class="relative group">
-                    <a href="${news.link}">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')">
                         <img class="rounded-lg w-full h-60 sm:h-48 object-cover" src="${news.image_url || './assets/img/404.jpg'}"
                         alt="${news.title}">
                         <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity">
@@ -435,7 +428,7 @@ const displayPoliticsNews = (data) => {
                     </a>
                 </div>
                 <div class="mt-3">
-                    <a href="${news.link}" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
                     <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide mt-2">${news.category || "General"}</a>
                 </div>
             </div>
@@ -468,7 +461,7 @@ const displayEntertainmentNews = (data) => {
     const entertainmentNewsHTML = entertainmentNews.map(news => `
             <div>
                 <div class="relative group">
-                    <a href="${news.link}">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')">
                         <img class="rounded-lg w-full h-60 sm:h-48 object-cover" src="${news.image_url || './assets/img/404.jpg'}"
                         alt="${news.title}">
                         <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity">
@@ -476,7 +469,7 @@ const displayEntertainmentNews = (data) => {
                     </a>
                 </div>
                 <div class="mt-3">
-                    <a href="${news.link}" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
                     <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide mt-2">${news.category || "General"}</a>
                 </div>
             </div>
@@ -509,7 +502,7 @@ const displayOthersNews = (data) => {
     const othersNewsHTML = othersNews.map(news => `
             <div>
                 <div class="relative group">
-                    <a href="${news.link}">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')">
                         <img class="rounded-lg w-full h-60 sm:h-48 object-cover" src="${news.image_url || './assets/img/404.jpg'}"
                         alt="${news.title}">
                         <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity">
@@ -517,7 +510,7 @@ const displayOthersNews = (data) => {
                     </a>
                 </div>
                 <div class="mt-3">
-                    <a href="${news.link}" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
                     <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide mt-2">${news.category || "General"}</a>
                 </div>
             </div>
@@ -532,5 +525,91 @@ const displayOthersNews = (data) => {
             ${othersNewsHTML}
         </div>
       </div>
+    `;
+};
+
+// Detail News Display
+const displayDetailNews = (detailNews, dataRecommendNews) => {
+
+    const detailNewsData = detailNews.results;
+    const recommendNewsData = dataRecommendNews.results;
+    
+    // Pastikan elemen HTML untuk detail berita ada
+    const detailNewsContainer = document.getElementById('detailNewsContainer');
+    if (!detailNewsContainer) {
+        console.error("Element #detailNewsContainer tidak ditemukan di halaman HTML.");
+        return;
+    }
+    detailNewsContainer.innerHTML = ""; // Reset kontainer
+    displayKosong();
+
+    // Rekomendasi News
+    const recommendNews = recommendNewsData.slice(0, 10);
+    const recommendNewsHTML = recommendNews.map(news => `
+            <li>
+                <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')" class="hover:underline">${memotongText(news.description, 10)}</a>
+            </li>
+    `).join('');
+
+    const newsData = detailNewsData[0]; 
+    const apiDate = `${newsData.pubDate}`;
+    const formattedDate = convertToReadableFormat(apiDate);
+
+    // Template HTML untuk detail berita
+    detailNewsContainer.innerHTML = `
+        <div class="bg-white px-7 sm:px-7 lg:px-11 pt-5 pb-32">
+            <nav class="flex" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+                <li class="inline-flex items-center">
+                    <a href="index.html" class="inline-flex items-center text-base font-medium text-dark hover:text-primary-default">
+                        Home
+                    </a>
+                </li>
+                <li aria-current="page">
+                    <div class="flex items-center">
+                    <svg class="rtl:rotate-180 w-3 h-3 text-dark mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                    </svg>
+                    <span class="ms-1 text-base font-medium text-dark md:ms-2">
+                    ${newsData.category}
+                    </span>
+                    </div>
+                </li>
+                <li aria-current="page">
+                    <div class="flex items-center">
+                    <svg class="rtl:rotate-180 w-3 h-3 text-dark mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                    </svg>
+                    <span class="ms-1 text-base font-medium text-dark md:ms-2">
+                    ${memotongText(newsData.title, 2)}
+                    </span>
+                    </div>
+                </li>
+                </ol>
+            </nav>
+            <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-16">
+                <div class="lg:col-span-2 mb-14 sm:mb-8 lg:mb-0 h-fit">
+                    <h1 class="font-serif font-semibold text-2xl mt-8 w-full lg:w-11/12 text-justify lg:text-left">${newsData.title}</h1>
+                    <p class="font-flex font-medium text-base tracking-wide mt-5 mb-1">By ${newsData.source_id}</p>
+                    <p class="font-flex font-medium text-base tracking-wide mb-7">Published ${formattedDate}</p>
+                    <img class="w-full h-1/6 sm:h-2/6 lg:h-3/6 object-cover rounded-lg" src="${newsData.image_url || './assets/img/404.jpg'}" alt="${newsData.title}">
+                    <p class="font-roboto font-normal text-lg tracking-wide w-full lg:w-11/12 mx-auto mt-12 leading-relaxed text-justify lg:text-left">
+                        ${newsData.description || "Tidak ada deskripsi untuk berita ini."}
+                        <br><br>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure saepe ipsum eius nostrum rem temporibus corporis! At aliquid illo necessitatibus sint tempore possimus numquam delectus, veritatis suscipit! Pariatur, voluptas. Enim, neque, sit excepturi cum voluptatum eos quo ea ab accusantium vitae nesciunt maxime hic quidem natus eum libero deleniti est?
+                        <br><br>
+                        Repudiandae totam fugit architecto, obcaecati maxime cum libero dolor ut? Saepe dolorum dignissimos officia quam iure voluptatibus asperiores non delectus ipsa id pariatur aut nostrum quas ipsum eaque facilis modi, incidunt molestias deserunt.
+                        <br><br>
+                        Minima distinctio, explicabo quia illum nam quaerat eum temporibus est deserunt! Ipsa quo incidunt deserunt aliquid cupiditate, praesentium delectus magni. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure nostrum adipisci fuga, debitis temporibus perspiciatis. Facere, cum quasi alias voluptatum magnam neque nam ipsam ullam culpa, distinctio vitae maiores porro inventore quo necessitatibus accusantium odio nostrum numquam aut repellendus! Deleniti, assumenda nobis! Consectetur laudantium accusantium quaerat dolorum eos sit rem!
+                    </p>            
+                </div>
+                <div class="lg:mt-48 h-auto lg:h-fit sticky top-7">
+                <h1 class="font-roboto text-lg font-medium tracking-wide mb-5 border-b-4 border-primary-default pb-1 w-full">More From DB News</h1>
+                <ul class="space-y-5 font-serif font-semibold text-base tracking-wide w-full text-justify">
+                    ${recommendNewsHTML}
+                </ul>
+                </div>
+            </div>
+        </div>
     `;
 };

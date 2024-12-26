@@ -14,3 +14,6 @@ const POLITICS_NEWS = `${HOT_NEWS}&category=politics`;
 const ENTERTAINMENT_NEWS = `${HOT_NEWS}&category=entertainment`;
 const OTHERS_NEWS = `${HOT_NEWS}&category=other`;
 const SEARCH_NEWS = `${HOT_NEWS}&q=`;
+const DETAIL_NEWS = `https://newsdata.io/api/1/latest?apikey=${API_KEY}&id=`;
+
+// Add Backend Detail News
