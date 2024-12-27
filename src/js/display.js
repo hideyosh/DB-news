@@ -2,11 +2,11 @@
 const errorContainer = document.getElementById('errorContainer');
 errorContainer.innerHTML = ""; 
 
-// Display kosoong
+// Display kosoong  
 const displayKosong = () => {
     // Pilih hanya div dengan ID tertentu
     const specificDivs = document.querySelectorAll(
-        "#hotNewsContainer, #latestNewsContainer, #recomendNewsContainer, #categoryNewsContainer, #searchNewsContainer, #technologyNewsContainer, #sportsNewsContainer, #politicsNewsContainer, #entertainmentNewsContainer, #othersNewsContainer, #detailNewsContainer"
+        "#hotNewsContainer, #latestNewsContainer, #recomendNewsContainer, #categoryNewsContainer, #searchNewsContainer, #technologyNewsContainer, #sportsNewsContainer, #politicsNewsContainer, #entertainmentNewsContainer, #scienceNewsContainer, #othersNewsContainer, #detailNewsContainer"
     );
 
     // Kosongkan isi dari setiap div yang dipilih
@@ -242,7 +242,7 @@ const displayCategoryNews = (dataScience, dataSports) => {
                 <!-- Title -->
                 <div class="flex justify-between">
                     <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">SCIENCE</h1>
-                    <a href="#"
+                    <a href="#scienceNewsContainer" onclick="fetchScienceNews()" 
                     class="hidden sm:flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110 ">
                     See All
                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
@@ -264,7 +264,7 @@ const displayCategoryNews = (dataScience, dataSports) => {
                 <!-- Title -->
                 <div class="flex justify-between">
                     <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">SPORTS</h1>
-                    <a href="#sport"
+                    <a href="#sportsNewsContainer" onclick="fetchSportsNews()" 
                     class=" hidden sm:flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110 ">
                     See All
                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
@@ -400,6 +400,47 @@ const displaySportsNews = (data) => {
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             ${sportsNewsHTML}
+        </div>
+      </div>
+    `;
+};
+
+//Science Display
+const displayScienceNews = (data) => {
+    const scienceNewsData = data.results;
+
+    const scienceNewsContainer = document.getElementById('scienceNewsContainer'); // Pastikan elemen ini ada di HTML
+    const navbarDesktop = document.getElementById('navbarDesktop');
+    const navbarMobile = document.getElementById('navbarMobile');
+    scienceNewsContainer.innerHTML = ""; 
+    displayKosong();
+
+    // Tampilkan Latest News
+    const scienceNews = scienceNewsData.slice(0, 10); // Ambil berita kedua hingga keempat
+    const scienceNewsHTML = scienceNews.map(news => `
+            <div>
+                <div class="relative group">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')">
+                        <img class="rounded-lg w-full h-60 sm:h-48 object-cover" src="${news.image_url || './assets/img/404.jpg'}"
+                        alt="${news.title}">
+                        <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity">
+                        </div>
+                    </a>
+                </div>
+                <div class="mt-3">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
+                    <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide mt-2">${news.category || "General"}</a>
+                </div>
+            </div>
+      `).join('');
+
+    scienceNewsContainer.innerHTML += `
+      <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
+        <div class="flex justify-between">
+            <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">SCIENCE</h1>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            ${scienceNewsHTML}
         </div>
       </div>
     `;
@@ -544,7 +585,7 @@ const displayDetailNews = (detailNews, dataRecommendNews) => {
     displayKosong();
 
     // Rekomendasi News
-    const recommendNews = recommendNewsData.slice(0, 10);
+    const recommendNews = recommendNewsData.slice(0, 5);
     const recommendNewsHTML = recommendNews.map(news => `
             <li>
                 <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')" class="hover:underline">${memotongText(news.description, 10)}</a>
@@ -570,8 +611,8 @@ const displayDetailNews = (detailNews, dataRecommendNews) => {
                     <svg class="rtl:rotate-180 w-3 h-3 text-dark mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                     </svg>
-                    <span class="ms-1 text-base font-medium text-dark md:ms-2">
-                    ${newsData.category}
+                    <span class="ms-1 text-base font-medium text-dark md:ms-2 capitalize">
+                        ${newsData.category}
                     </span>
                     </div>
                 </li>
@@ -581,7 +622,7 @@ const displayDetailNews = (detailNews, dataRecommendNews) => {
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                     </svg>
                     <span class="ms-1 text-base font-medium text-dark md:ms-2">
-                    ${memotongText(newsData.title, 2)}
+                        ${memotongText(newsData.title, 2)}
                     </span>
                     </div>
                 </li>
@@ -590,7 +631,7 @@ const displayDetailNews = (detailNews, dataRecommendNews) => {
             <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-16">
                 <div class="lg:col-span-2 mb-14 sm:mb-8 lg:mb-0 h-fit">
                     <h1 class="font-serif font-semibold text-2xl mt-8 w-full lg:w-11/12 text-justify lg:text-left">${newsData.title}</h1>
-                    <p class="font-flex font-medium text-base tracking-wide mt-5 mb-1">By ${newsData.source_id}</p>
+                    <p class="font-flex font-medium text-base tracking-wide mt-5 mb-1 capitalize">By ${newsData.source_id}</p>
                     <p class="font-flex font-medium text-base tracking-wide mb-7">Published ${formattedDate}</p>
                     <img class="w-full h-1/6 sm:h-2/6 lg:h-3/6 object-cover rounded-lg" src="${newsData.image_url || './assets/img/404.jpg'}" alt="${newsData.title}">
                     <p class="font-roboto font-normal text-lg tracking-wide w-full lg:w-11/12 mx-auto mt-12 leading-relaxed text-justify lg:text-left">
