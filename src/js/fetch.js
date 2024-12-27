@@ -24,7 +24,7 @@ const fetchHotNews = async () => {
             displayNews(data);
         } catch (error) {
             console.error("Failed to fetch hot news:", error);
-            hotNewsContainer.innerHTML = `
+            errorContainer.innerHTML = `
             <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
                 <div class="flex justify-between">
                     <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">Error: ${error.message}</h1>
@@ -62,7 +62,7 @@ const fetchLatestNews = async () => {
             displayLatestNews(data);
         } catch (error) {
             console.error("Failed to fetch hot news:", error);
-            hotNewsContainer.innerHTML = `
+            errorContainer.innerHTML = `
             <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
                 <div class="flex justify-between">
                     <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">Error: ${error.message}</h1>
@@ -100,7 +100,7 @@ const fetchRecomendNews = async () => {
             displayRecomendNews(data);
         } catch (error) {
             console.error("Failed to fetch hot news:", error);
-            hotNewsContainer.innerHTML = `
+            errorContainer.innerHTML = `
             <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
                 <div class="flex justify-between">
                     <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">Error: ${error.message}</h1>
@@ -144,7 +144,7 @@ const fetchCategoryNews = async () => {
             displayCategoryNews(dataScience, dataSports);
         } catch (error) {
             console.error("Failed to fetch hot news:", error);
-            categoryNewsContainer.innerHTML = `
+            errorContainer.innerHTML = `
             <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
                 <div class="flex justify-between">
                     <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">Error: ${error.message}</h1>
@@ -158,7 +158,7 @@ const fetchCategoryNews = async () => {
 
 // Search News
 const fetchSearchNews = async () => {
-    // Jika data belum ada, ambil dari API
+    displayKosong();
     try {
         await delay(5000); // Delay 5 detik antara permintaan
 
@@ -168,7 +168,7 @@ const fetchSearchNews = async () => {
         displaySearchNews(data);
     } catch (error) {
         console.error("Failed to fetch hot news:", error);
-        hotNewsContainer.innerHTML = `
+        errorContainer.innerHTML = `
         <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
             <div class="flex justify-between">
                 <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">Error: ${error.message}</h1>
@@ -181,6 +181,7 @@ const fetchSearchNews = async () => {
 
 // Technology News
 const fetchTechnologyNews = async () => {
+    displayKosong();
     // Cek apakah berita sudah ada di localStorage
     const cachedTechnologyNews = sessionStorage.getItem('technologyNews');
     const lastFetched = sessionStorage.getItem('lastFetchedDate'); // Tanggal terakhir data di-fetch
@@ -205,7 +206,7 @@ const fetchTechnologyNews = async () => {
             displayTechnologyNews(data);
         } catch (error) {
             console.error("Failed to fetch hot news:", error);
-            hotNewsContainer.innerHTML = `
+            errorContainer.innerHTML = `
             <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
                 <div class="flex justify-between">
                     <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">Error: ${error.message}</h1>
@@ -219,6 +220,7 @@ const fetchTechnologyNews = async () => {
 
 // Sports News
 const fetchSportsNews = async () => {
+    displayKosong();
     // Cek apakah berita sudah ada di localStorage
     const cachedSportsNews = sessionStorage.getItem('sportsNews');
     const lastFetched = sessionStorage.getItem('lastFetchedDate'); // Tanggal terakhir data di-fetch
@@ -243,7 +245,7 @@ const fetchSportsNews = async () => {
             displaySportsNews(data);
         } catch (error) {
             console.error("Failed to fetch hot news:", error);
-            hotNewsContainer.innerHTML = `
+            errorContainer.innerHTML = `
             <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
                 <div class="flex justify-between">
                     <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">Error: ${error.message}</h1>
@@ -257,6 +259,7 @@ const fetchSportsNews = async () => {
 
 // Politics News
 const fetchPoliticsNews = async () => {
+    displayKosong();
     // Cek apakah berita sudah ada di localStorage
     const cachedPoliticsNews = sessionStorage.getItem('politicsNews');
     const lastFetched = sessionStorage.getItem('lastFetchedDate'); // Tanggal terakhir data di-fetch
@@ -281,7 +284,7 @@ const fetchPoliticsNews = async () => {
             displayPoliticsNews(data);
         } catch (error) {
             console.error("Failed to fetch hot news:", error);
-            hotNewsContainer.innerHTML = `
+            errorContainer.innerHTML = `
             <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
                 <div class="flex justify-between">
                     <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">Error: ${error.message}</h1>
@@ -295,6 +298,7 @@ const fetchPoliticsNews = async () => {
 
 // Entertainment News
 const fetchEntertainmentNews = async () => {
+    displayKosong();
     // Cek apakah berita sudah ada di localStorage
     const cachedEntertainmentNews = sessionStorage.getItem('entertainmentNews');
     const lastFetched = sessionStorage.getItem('lastFetchedDate'); // Tanggal terakhir data di-fetch
@@ -319,7 +323,7 @@ const fetchEntertainmentNews = async () => {
             displayEntertainmentNews(data);
         } catch (error) {
             console.error("Failed to fetch hot news:", error);
-            hotNewsContainer.innerHTML = `
+            errorContainer.innerHTML = `
             <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
                 <div class="flex justify-between">
                     <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">Error: ${error.message}</h1>
@@ -333,6 +337,7 @@ const fetchEntertainmentNews = async () => {
 
 // Others News
 const fetchOthersNews = async () => {
+    displayKosong();
     // Cek apakah berita sudah ada di localStorage
     const cachedOthersNews = sessionStorage.getItem('othersNews');
     const lastFetched = sessionStorage.getItem('lastFetchedDate'); // Tanggal terakhir data di-fetch
@@ -357,7 +362,7 @@ const fetchOthersNews = async () => {
             displayOthersNews(data);
         } catch (error) {
             console.error("Failed to fetch hot news:", error);
-            hotNewsContainer.innerHTML = `
+            errorContainer.innerHTML = `
             <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
                 <div class="flex justify-between">
                     <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">Error: ${error.message}</h1>
@@ -368,3 +373,54 @@ const fetchOthersNews = async () => {
         }
     }
 };
+
+// Detail News
+const fetchDetailNews = async (articleId) => {
+    displayKosong();
+    const cachedDetailNews = sessionStorage.getItem(`detailNews_${articleId}`);
+    const cachedRecomendNews = sessionStorage.getItem('recomendNews');
+    const lastFetched = sessionStorage.getItem('lastFetchedDate'); // Tanggal terakhir data di-fetch
+    const today = new Date().toDateString(); // Tanggal hari ini dalam format string
+
+    if (cachedDetailNews && cachedRecomendNews && lastFetched === today) {
+        // Jika data sudah ada di cache, langsung tampilkan
+        const dataRecommendNews = JSON.parse(cachedRecomendNews);
+        const detailNews = JSON.parse(cachedDetailNews);
+        displayDetailNews(detailNews, dataRecommendNews);
+    } else {
+        // Jika detailNews belum ada, ambil dari API
+        try {
+            await delay(5000); // Delay 5 detik antara permintaan
+
+            const responseDetailNews = await fetch(`${DETAIL_NEWS}${articleId}`);
+            const responseRecommendNews = await fetch(RECOMEND_NEWS);
+            if (!responseDetailNews.ok) throw new Error(`HTTP error! status: ${responseDetailNews.status}`);
+            if (!responseRecommendNews.ok) throw new Error(`HTTP error! status: ${responseRecommendNews.status}`);
+
+            const detailNews = await responseDetailNews.json();
+            const dataRecommendNews = await responseRecommendNews.json();
+            sessionStorage.setItem('recomendNews', JSON.stringify(dataRecommendNews)); // Simpan data ke cache
+            sessionStorage.setItem(`detailNews_${articleId}`, JSON.stringify(detailNews));// Simpan detailNews ke cache
+
+            sessionStorage.setItem('lastFetchedDate', today);
+
+            displayDetailNews(detailNews, dataRecommendNews);
+        } catch (error) {
+            console.error("Failed to fetch hot news:", error);
+            errorContainer.innerHTML = `
+            <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
+                <div class="flex justify-between">
+                    <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">Error: ${error.message}</h1>
+                    ${displayKosong()}
+                </div>
+            </div>
+            `;
+        }
+    }
+
+
+
+
+    
+};
+

@@ -11,6 +11,29 @@ const memotongText = (text, maxWords) => {
     return text;
 };
 
+const convertToReadableFormat = (apiDate) => {
+  const date = new Date(apiDate);
+
+  // Array nama bulan
+  const months = [
+      "January", "February", "March", "April", "May", "June", 
+      "July", "August", "September", "October", "November", "December"
+  ];
+
+  // Ambil komponen tanggal
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = months[date.getMonth()]; // Nama bulan
+  const year = date.getFullYear();
+
+  // Format waktu dalam 12 jam
+  let hours = date.getHours();
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12 || 12; // Konversi ke format 12 jam, 0 jadi 12
+
+  return `${day} ${month} ${year}, ${hours}:${minutes} ${ampm}`;
+};
+
 const menuButton = document.querySelector('[aria-controls="mobile-menu"]');
 const mobileMenu = document.getElementById('mobile-menu');
 
