@@ -491,45 +491,6 @@ const fetchOthersNews = async () => {
     }
 };
 
-// Science News
-const fetchScienceNews = async () => {
-    displayKosong();
-    // Cek apakah berita sudah ada di localStorage
-    const cachedScienceNews = sessionStorage.getItem('scienceNews');
-    const lastFetched = sessionStorage.getItem('lastFetchedDate'); // Tanggal terakhir data di-fetch
-    const today = new Date().toDateString(); // Tanggal hari ini dalam format string
-
-    if (cachedScienceNews && lastFetched === today) {
-        // Jika data sudah ada di cache, langsung tampilkan
-        const data = JSON.parse(cachedScienceNews);
-        displayScienceNews(data);
-    } else {
-        // Jika data belum ada, ambil dari API
-        try {
-            await delay(5000); // Delay 5 detik antara permintaan
-
-            const response = await fetch(SCIENCE_NEWS);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-            const data = await response.json();
-            sessionStorage.setItem('scienceNews', JSON.stringify(data)); // Simpan data ke cache
-            sessionStorage.setItem('lastFetchedDate', today);
-
-            displayScienceNews(data);
-        } catch (error) {
-            console.error("Failed to fetch hot news:", error);
-            errorContainer.innerHTML = `
-            <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
-                <div class="flex justify-between">
-                    <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">Error: ${error.message}</h1>
-                    ${displayKosong()}
-                </div>
-            </div>
-            `;
-        }
-    }
-};
-
 // Detail News
 const fetchDetailNews = async (articleId) => {
     displayKosong();

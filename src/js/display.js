@@ -520,7 +520,6 @@ const displaySportsNews = (data) => {
     `;
 };
 
-
 // Politics Display
 const displayPoliticsNews = (data) => {
     const politicsNewsData = data.results;
