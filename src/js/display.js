@@ -6,7 +6,7 @@ errorContainer.innerHTML = "";
 const displayKosong = () => {
     // Pilih hanya div dengan ID tertentu
     const specificDivs = document.querySelectorAll(
-        "#hotNewsContainer, #latestNewsContainer, #recomendNewsContainer, #categoryNewsContainer, #searchNewsContainer, #technologyNewsContainer, #sportsNewsContainer, #politicsNewsContainer, #entertainmentNewsContainer, #scienceNewsContainer, #othersNewsContainer, #detailNewsContainer"
+        "#errorContainer, #hotNewsContainer, #latestNewsContainer, #recomendNewsContainer, #categoryNewsContainer, #searchNewsContainer, #scienceNewsContainer, #technologyNewsContainer, #sportsNewsContainer, #politicsNewsContainer, #entertainmentNewsContainer, #othersNewsContainer, #detailNewsContainer"
     );
 
     // Kosongkan isi dari setiap div yang dipilih
@@ -103,7 +103,7 @@ const displayLatestNews = (data) => {
       <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
         <div class="flex justify-between">
             <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">LATEST NEWS</h1>
-            <a href="#latestNewsContainer"
+            <a href="#latestNewsContainer" onclick="fetchLatestNewsAll()"
                 class="hidden sm:flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110">
                 See All
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
@@ -115,6 +115,45 @@ const displayLatestNews = (data) => {
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             ${latestNewsHTML}
+        </div>
+      </div>
+    `;
+};
+
+// Latest All Display
+const displayLatestNewsAll = (data) => {
+    const latestNewsDataAll = data.results;
+
+    const latestNewsContainer = document.getElementById('latestNewsContainer'); // Pastikan elemen ini ada di HTML
+    latestNewsContainer.innerHTML = ""; // Reset kontainer
+    displayKosong();
+
+    // Tampilkan Latest News
+    const latestNewsAll = latestNewsDataAll.slice(0, 10); // Ambil berita kedua hingga keempat
+    const latestNewsAllHTML = latestNewsAll.map(news => `
+            <div>
+                <div class="relative group">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')">
+                        <img class="rounded-lg w-full h-60 sm:h-48 object-cover" src="${news.image_url || './assets/img/404.jpg'}"
+                        alt="${news.title}">
+                        <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity">
+                        </div>
+                    </a>
+                </div>
+                <div class="mt-3">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
+                    <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide mt-2">${news.category || "General"}</a>
+                </div>
+            </div>
+      `).join('');
+
+      latestNewsContainer.innerHTML += `
+      <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
+        <div class="flex justify-between">
+            <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">LATEST NEWS</h1>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            ${latestNewsAllHTML}
         </div>
       </div>
     `;
@@ -169,7 +208,7 @@ const displayRecomendNews = (data) => {
     <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
         <div class="flex justify-between">
             <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">RECOMMENDATION</h1>
-            <a href="#"
+            <a href="#recomendNewsContainer" onclick="fetchRecommendNewsAll()"
                 class="hidden sm:flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110 ">
                 See All
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
@@ -186,6 +225,45 @@ const displayRecomendNews = (data) => {
         </div>
      </div>
     </div>
+    `;
+};
+
+// Latest All Display
+const displayRecommendNewsAll = (data) => {
+    const recommendNewsDataAll = data.results;
+
+    const recomendNewsContainer = document.getElementById('recomendNewsContainer'); // Pastikan elemen ini ada di HTML
+    recomendNewsContainer.innerHTML = ""; // Reset kontainer
+    displayKosong();
+
+    // Tampilkan Latest News
+    const recommendNewsAll = recommendNewsDataAll.slice(0, 10); // Ambil berita kedua hingga keempat
+    const recommendNewsAllHTML = recommendNewsAll.map(news => `
+            <div>
+                <div class="relative group">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')">
+                        <img class="rounded-lg w-full h-60 sm:h-48 object-cover" src="${news.image_url || './assets/img/404.jpg'}"
+                        alt="${news.title}">
+                        <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity">
+                        </div>
+                    </a>
+                </div>
+                <div class="mt-3">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
+                    <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide mt-2">${news.category || "General"}</a>
+                </div>
+            </div>
+      `).join('');
+
+      recomendNewsContainer.innerHTML += `
+      <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
+        <div class="flex justify-between">
+            <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">RECOMMENDATION NEWS</h1>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            ${recommendNewsAllHTML}
+        </div>
+      </div>
     `;
 };
 
@@ -242,7 +320,7 @@ const displayCategoryNews = (dataScience, dataSports) => {
                 <!-- Title -->
                 <div class="flex justify-between">
                     <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">SCIENCE</h1>
-                    <a href="#scienceNewsContainer" onclick="fetchScienceNews()" 
+                    <a href="#scienceNewsContainer" onclick="fetchScienceNews()"
                     class="hidden sm:flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110 ">
                     See All
                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
@@ -264,7 +342,7 @@ const displayCategoryNews = (dataScience, dataSports) => {
                 <!-- Title -->
                 <div class="flex justify-between">
                     <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">SPORTS</h1>
-                    <a href="#sportsNewsContainer" onclick="fetchSportsNews()" 
+                    <a href="#sportsNewsContainer" onclick="fetchSportsNews()"
                     class=" hidden sm:flex font-roboto font-medium text-primary-default items-center transform transition-transform duration-300 hover:scale-110 ">
                     See All
                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
@@ -323,13 +401,50 @@ const displaySearchNews = (data) => {
     `;
 };
 
+// Science Display
+const displayScienceNews = (data) => {
+    const scienceNewsData = data.results;
+
+    const scienceNewsContainer = document.getElementById('scienceNewsContainer'); // Pastikan elemen ini ada di HTML
+    scienceNewsContainer.innerHTML = ""; // Reset kontainer
+    displayKosong();
+
+    // Tampilkan Latest News
+    const scienceNews = scienceNewsData.slice(0, 10); // Ambil berita kedua hingga keempat
+    const scienceNewsHTML = scienceNews.map(news => `
+            <div>
+                <div class="relative group">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')">
+                        <img class="rounded-lg w-full h-60 sm:h-48 object-cover" src="${news.image_url || './assets/img/404.jpg'}"
+                        alt="${news.title}">
+                        <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity">
+                        </div>
+                    </a>
+                </div>
+                <div class="mt-3">
+                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
+                    <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide mt-2">${news.category || "General"}</a>
+                </div>
+            </div>
+      `).join('');
+
+    scienceNewsContainer.innerHTML += `
+      <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
+        <div class="flex justify-between">
+            <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">SCIENCE</h1>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            ${scienceNewsHTML}
+        </div>
+      </div>
+    `;
+};
+
 // Technology Display
 const displayTechnologyNews = (data) => {
     const technologyNewsData = data.results;
 
     const technologyNewsContainer = document.getElementById('technologyNewsContainer'); // Pastikan elemen ini ada di HTML
-    const navbarDesktop = document.getElementById('navbarDesktop');
-    const navbarMobile = document.getElementById('navbarMobile');
     technologyNewsContainer.innerHTML = ""; // Reset kontainer
     displayKosong();
 
@@ -405,46 +520,6 @@ const displaySportsNews = (data) => {
     `;
 };
 
-//Science Display
-const displayScienceNews = (data) => {
-    const scienceNewsData = data.results;
-
-    const scienceNewsContainer = document.getElementById('scienceNewsContainer'); // Pastikan elemen ini ada di HTML
-    const navbarDesktop = document.getElementById('navbarDesktop');
-    const navbarMobile = document.getElementById('navbarMobile');
-    scienceNewsContainer.innerHTML = ""; 
-    displayKosong();
-
-    // Tampilkan Latest News
-    const scienceNews = scienceNewsData.slice(0, 10); // Ambil berita kedua hingga keempat
-    const scienceNewsHTML = scienceNews.map(news => `
-            <div>
-                <div class="relative group">
-                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')">
-                        <img class="rounded-lg w-full h-60 sm:h-48 object-cover" src="${news.image_url || './assets/img/404.jpg'}"
-                        alt="${news.title}">
-                        <div class="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-35 rounded-lg transition-opacity">
-                        </div>
-                    </a>
-                </div>
-                <div class="mt-3">
-                    <a id="detailNews" href="#detailNewsContainer" onclick="fetchDetailNews('${news.article_id}')" class="block w-full font-serif font-semibold text-lg text-dark hover:underline">${news.title}</a>
-                    <a href="#" class="block capitalize font-medium font-flex text-base text-primary-default tracking-wide mt-2">${news.category || "General"}</a>
-                </div>
-            </div>
-      `).join('');
-
-    scienceNewsContainer.innerHTML += `
-      <div class="bg-white px-7 sm:px-11 py-10 mt-7 mb-5">
-        <div class="flex justify-between">
-            <h1 class="font-bold font-flex text-3xl text-primary-default tracking-widest mb-5 hover:underline sm:hover:no-underline">SCIENCE</h1>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-            ${scienceNewsHTML}
-        </div>
-      </div>
-    `;
-};
 
 // Politics Display
 const displayPoliticsNews = (data) => {
